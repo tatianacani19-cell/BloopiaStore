@@ -357,6 +357,69 @@ function initHeroSlider() {
   startAuto();
 }
 
+// ========== PROMO SLIDER ==========
+function initPromoSlider() {
+  const slides = document.querySelectorAll('.promo-slide');
+  const dots = document.querySelectorAll('.promo-dot');
+  const prevBtn = document.getElementById('promoPrev');
+  const nextBtn = document.getElementById('promoNext');
+  if (!slides.length) return;
+
+  let current = 0;
+  let interval = null;
+  const DELAY = 6000;
+
+  function goTo(index) {
+    slides.forEach((s, i) => {
+      s.classList.toggle('active', i === index);
+    });
+    dots.forEach((d, i) => {
+      d.classList.toggle('active', i === index);
+    });
+    current = index;
+  }
+
+  function next() {
+    goTo((current + 1) % slides.length);
+  }
+
+  function prev() {
+    goTo((current - 1 + slides.length) % slides.length);
+  }
+
+  function startAuto() {
+    stopAuto();
+    interval = setInterval(next, DELAY);
+  }
+
+  function stopAuto() {
+    if (interval) {
+      clearInterval(interval);
+      interval = null;
+    }
+  }
+
+  function restartAuto() {
+    stopAuto();
+    startAuto();
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => { prev(); restartAuto(); });
+  if (nextBtn) nextBtn.addEventListener('click', () => { next(); restartAuto(); });
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.dataset.index);
+      if (idx !== current) {
+        goTo(idx);
+        restartAuto();
+      }
+    });
+  });
+
+  startAuto();
+}
+
 // ========== BACK TO TOP ==========
 document.getElementById('backToTop')?.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -365,6 +428,7 @@ document.getElementById('backToTop')?.addEventListener('click', () => {
 // ========== INIT ==========
 document.addEventListener('DOMContentLoaded', () => {
   initHeroSlider();
+  initPromoSlider();
   initProducts();
   updateCartUI();
 });

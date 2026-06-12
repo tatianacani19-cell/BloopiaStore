@@ -9,6 +9,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="preload" href="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=80" as="image" />
+  <link rel="preload" href="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=900&q=80" as="image" />
+  <link rel="preload" href="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=900&q=80" as="image" />
 </head>
 <body>
 
@@ -151,6 +154,67 @@
           </div>
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- ========== PROMO SLIDER ========== -->
+  <section class="promo-slider-section" id="promoSlider">
+    <div class="promo-slider" id="promoSlides">
+      <div class="promo-slide active">
+        <div class="promo-slide-content">
+          <span class="promo-slide-badge">Nueva Colección</span>
+          <h2 class="promo-slide-title">Elegancia que Define<br />tu Estilo</h2>
+          <p class="promo-slide-desc">Descubre piezas atemporales diseñadas para la vida moderna. Cada detalle está pensado para realzar tu esencia.</p>
+          <div class="promo-slide-actions">
+            <a href="#" class="btn btn-primary">Comprar Ahora</a>
+            <a href="#" class="btn btn-outline">Ver Colección</a>
+          </div>
+        </div>
+        <div class="promo-slide-image">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=80" alt="Nueva Colección" />
+        </div>
+      </div>
+      <div class="promo-slide">
+        <div class="promo-slide-content">
+          <span class="promo-slide-badge">Temporada</span>
+          <h2 class="promo-slide-title">Hogar con Esencia<br />Natural</h2>
+          <p class="promo-slide-desc">Transforma tu espacio en un refugio de paz con nuestra colección de decoración inspirada en la naturaleza.</p>
+          <div class="promo-slide-actions">
+            <a href="#" class="btn btn-primary">Explorar Colección</a>
+            <a href="#" class="btn btn-outline">Ver Más</a>
+          </div>
+        </div>
+        <div class="promo-slide-image">
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=900&q=80" alt="Colección Hogar" />
+        </div>
+      </div>
+      <div class="promo-slide">
+        <div class="promo-slide-content">
+          <span class="promo-slide-badge">Oferta Especial</span>
+          <h2 class="promo-slide-title">Accesorios que<br />Transforman</h2>
+          <p class="promo-slide-desc">Los detalles marcan la diferencia. Encuentra los complementos perfectos para elevar cualquier look con estilo.</p>
+          <div class="promo-slide-actions">
+            <a href="#" class="btn btn-primary">Comprar Ahora</a>
+            <a href="#" class="btn btn-outline">Descubrir</a>
+          </div>
+        </div>
+        <div class="promo-slide-image">
+          <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=900&q=80" alt="Accesorios" />
+        </div>
+      </div>
+    </div>
+
+    <button class="promo-arrow promo-arrow-left" id="promoPrev" aria-label="Anterior">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="promo-arrow promo-arrow-right" id="promoNext" aria-label="Siguiente">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <div class="promo-dots" id="promoDots">
+      <span class="promo-dot active" data-index="0"></span>
+      <span class="promo-dot" data-index="1"></span>
+      <span class="promo-dot" data-index="2"></span>
     </div>
   </section>
 
