@@ -81,7 +81,7 @@ input { font-family: inherit; }
   font-weight: 600;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--brand-purple);
+  color: var(--text);
   margin-bottom: 10px;
 }
 
@@ -90,7 +90,7 @@ input { font-family: inherit; }
   font-weight: 500;
   letter-spacing: -0.5px;
   margin-bottom: 12px;
-  color: var(--brand-purple-dark);
+  color: var(--text);
 }
 
 .section-desc {
