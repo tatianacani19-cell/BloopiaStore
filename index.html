@@ -62,17 +62,58 @@
     </div>
   </header>
 
-  <!-- ========== HERO ========== -->
-  <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content container">
-      <span class="hero-badge">Nueva Colección</span>
-      <h1 class="hero-title">Donde la Simplicidad<br />Encuentra la Elegancia</h1>
-      <p class="hero-subtitle">Piezas seleccionadas para la vida moderna. Descubre diseños atemporales que hablan de tu estilo.</p>
-      <div class="hero-actions">
-        <a href="#" class="btn btn-primary">Comprar Colección</a>
-        <a href="#" class="btn btn-outline">Explorar</a>
+  <!-- ========== HERO SLIDER ========== -->
+  <section class="hero" id="heroSlider">
+    <div class="hero-slides" id="heroSlides">
+      <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+          <span class="hero-badge">Nueva Colección</span>
+          <h1 class="hero-title">Donde la Simplicidad<br />Encuentra la Elegancia</h1>
+          <p class="hero-subtitle">Piezas seleccionadas para la vida moderna. Descubre diseños atemporales que hablan de tu estilo.</p>
+          <div class="hero-actions">
+            <a href="#" class="btn btn-primary">Comprar Colección</a>
+            <a href="#" class="btn btn-outline">Explorar</a>
+          </div>
+        </div>
       </div>
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1600&q=80');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+          <span class="hero-badge">Diseño Premium</span>
+          <h1 class="hero-title">Espacios que<br />Inspiran</h1>
+          <p class="hero-subtitle">Transforma tu hogar con piezas únicas y atemporales. Cada detalle está cuidadosamente pensado.</p>
+          <div class="hero-actions">
+            <a href="#" class="btn btn-primary">Ver Colección</a>
+            <a href="#" class="btn btn-outline">Descubrir</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1493655161922-ef98929de9d8?w=1600&q=80');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+          <span class="hero-badge">Esencia Natural</span>
+          <h1 class="hero-title">Estilo que<br />Trasciende</h1>
+          <p class="hero-subtitle">La belleza está en lo auténtico. Explora nuestra nueva línea de esenciales modernos.</p>
+          <div class="hero-actions">
+            <a href="#" class="btn btn-primary">Comprar Ahora</a>
+            <a href="#" class="btn btn-outline">Más Info</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="hero-arrow hero-arrow-left" id="heroPrev" aria-label="Anterior">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="hero-arrow hero-arrow-right" id="heroNext" aria-label="Siguiente">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <div class="hero-dots" id="heroDots">
+      <span class="hero-dot active" data-index="0"></span>
+      <span class="hero-dot" data-index="1"></span>
+      <span class="hero-dot" data-index="2"></span>
     </div>
   </section>
 
