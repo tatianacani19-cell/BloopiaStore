@@ -49,22 +49,6 @@ function renderProducts(gridId, items) {
 function initProducts() {
   const featured = getFeaturedProducts();
   renderProducts('featuredGrid', featured);
-  renderProducts('catalogGrid', products);
-  updateFilterControls();
-}
-
-// ========== FILTER CONTROLS ==========
-function updateFilterControls() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
-      renderProducts('catalogGrid', filtered);
-    });
-  });
 }
 
 // ========== CART FUNCTIONS ==========
@@ -284,16 +268,6 @@ document.addEventListener('keydown', (e) => {
 
 // ========== CHECKOUT BUTTON ==========
 document.getElementById('checkoutBtn')?.addEventListener('click', checkoutWhatsApp);
-
-// ========== NEWSLETTER ==========
-document.getElementById('newsletterForm')?.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const input = e.target.querySelector('input');
-  if (input.value.trim()) {
-    showNotification('¡Gracias por suscribirte!');
-    input.value = '';
-  }
-});
 
 // ========== HERO SLIDER ==========
 function initHeroSlider() {
