@@ -590,21 +590,7 @@ input { font-family: inherit; }
   box-shadow: var(--shadow-hover);
 }
 
-.card-apparel {
-  background-image: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.5) 100%), url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80');
-}
 
-.card-accessories {
-  background-image: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.5) 100%), url('https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=600&q=80');
-}
-
-.card-home {
-  background-image: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.5) 100%), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80');
-}
-
-.card-beauty {
-  background-image: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.5) 100%), url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80');
-}
 
 .category-info {
   padding: 28px;
