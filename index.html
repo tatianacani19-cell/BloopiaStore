@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BLOOPIA — Modern Lifestyle & Fashion</title>
+  <title>BLOOPIA — Estilo de Vida y Moda</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -26,20 +26,20 @@
 
       <nav class="nav-menu" id="navMenu">
         <ul class="nav-links">
-          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#" class="active">Inicio</a></li>
           <li class="dropdown">
-            <a href="#">Categories <i class="fas fa-chevron-down"></i></a>
+            <a href="#">Categorías <i class="fas fa-chevron-down"></i></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Apparel</a></li>
-              <li><a href="#">Accessories</a></li>
-              <li><a href="#">Home & Living</a></li>
-              <li><a href="#">Beauty</a></li>
-              <li><a href="#">Collections</a></li>
+              <li><a href="#">Ropa</a></li>
+              <li><a href="#">Accesorios</a></li>
+              <li><a href="#">Hogar</a></li>
+              <li><a href="#">Belleza</a></li>
+              <li><a href="#">Colecciones</a></li>
             </ul>
           </li>
-          <li><a href="#">New Arrivals</a></li>
-          <li><a href="#">Sale</a></li>
-          <li><a href="#">About</a></li>
+          <li><a href="#">Novedades</a></li>
+          <li><a href="#">Ofertas</a></li>
+          <li><a href="#">Nosotros</a></li>
         </ul>
       </nav>
 
@@ -57,7 +57,7 @@
     <!-- Search Overlay -->
     <div class="search-overlay" id="searchOverlay">
       <div class="search-bar-wrapper">
-        <input type="text" class="search-input" placeholder="Search products..." id="searchInput" />
+        <input type="text" class="search-input" placeholder="Buscar productos..." id="searchInput" />
         <button class="search-close" id="searchClose"><i class="fas fa-times"></i></button>
       </div>
     </div>
@@ -67,12 +67,12 @@
   <section class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content container">
-      <span class="hero-badge">New Collection</span>
-      <h1 class="hero-title">Where Simplicity<br />Meets Elegance</h1>
-      <p class="hero-subtitle">Curated pieces for the modern life. Discover timeless designs that speak to your style.</p>
+      <span class="hero-badge">Nueva Colección</span>
+      <h1 class="hero-title">Donde la Simplicidad<br />Encuentra la Elegancia</h1>
+      <p class="hero-subtitle">Piezas seleccionadas para la vida moderna. Descubre diseños atemporales que hablan de tu estilo.</p>
       <div class="hero-actions">
-        <a href="#" class="btn btn-primary">Shop Collection</a>
-        <a href="#" class="btn btn-outline">Explore</a>
+        <a href="#" class="btn btn-primary">Comprar Colección</a>
+        <a href="#" class="btn btn-outline">Explorar</a>
       </div>
     </div>
   </section>
@@ -81,33 +81,33 @@
   <section class="section">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">Categories</span>
-        <h2 class="section-title">Shop by Category</h2>
-        <p class="section-desc">Explore our thoughtfully curated categories designed to elevate your everyday.</p>
+        <span class="section-label">Categorías</span>
+        <h2 class="section-title">Compra por Categoría</h2>
+        <p class="section-desc">Explora nuestras categorías cuidadosamente seleccionadas para realzar tu día a día.</p>
       </div>
       <div class="categories-grid">
         <a href="#" class="category-card card-apparel">
           <div class="category-info">
-            <h3>Apparel</h3>
-            <span>Shop Now <i class="fas fa-arrow-right"></i></span>
+            <h3>Ropa</h3>
+            <span>Comprar Ahora <i class="fas fa-arrow-right"></i></span>
           </div>
         </a>
         <a href="#" class="category-card card-accessories">
           <div class="category-info">
-            <h3>Accessories</h3>
-            <span>Shop Now <i class="fas fa-arrow-right"></i></span>
+            <h3>Accesorios</h3>
+            <span>Comprar Ahora <i class="fas fa-arrow-right"></i></span>
           </div>
         </a>
         <a href="#" class="category-card card-home">
           <div class="category-info">
-            <h3>Home & Living</h3>
-            <span>Shop Now <i class="fas fa-arrow-right"></i></span>
+            <h3>Hogar</h3>
+            <span>Comprar Ahora <i class="fas fa-arrow-right"></i></span>
           </div>
         </a>
         <a href="#" class="category-card card-beauty">
           <div class="category-info">
-            <h3>Beauty</h3>
-            <span>Shop Now <i class="fas fa-arrow-right"></i></span>
+            <h3>Belleza</h3>
+            <span>Comprar Ahora <i class="fas fa-arrow-right"></i></span>
           </div>
         </a>
       </div>
@@ -118,9 +118,9 @@
   <section class="section section-gray">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">Featured</span>
-        <h2 class="section-title">Featured Products</h2>
-        <p class="section-desc">Handpicked favorites from our latest collection.</p>
+        <span class="section-label">Destacados</span>
+        <h2 class="section-title">Productos Destacados</h2>
+        <p class="section-desc">Favoritos seleccionados de nuestra última colección.</p>
       </div>
       <div class="product-grid" id="featuredGrid"></div>
     </div>
@@ -130,10 +130,10 @@
   <section class="promo-banner">
     <div class="promo-overlay"></div>
     <div class="promo-content container">
-      <span class="promo-badge">Limited Offer</span>
-      <h2 class="promo-title">Up to 40% Off</h2>
-      <p class="promo-subtitle">On select lifestyle essentials. Elevate your space and style today.</p>
-      <a href="#" class="btn btn-primary">Shop the Sale</a>
+      <span class="promo-badge">Oferta Limitada</span>
+      <h2 class="promo-title">Hasta 40% de Descuento</h2>
+      <p class="promo-subtitle">En artículos esenciales seleccionados. Realza tu espacio y estilo hoy.</p>
+      <a href="#" class="btn btn-primary">Aprovecha la Oferta</a>
     </div>
   </section>
 
@@ -141,16 +141,16 @@
   <section class="section">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">Catalog</span>
-        <h2 class="section-title">All Products</h2>
-        <p class="section-desc">Browse our full collection of premium lifestyle goods.</p>
+        <span class="section-label">Catálogo</span>
+        <h2 class="section-title">Todos los Productos</h2>
+        <p class="section-desc">Explora nuestra colección completa de artículos premium.</p>
       </div>
       <div class="catalog-controls">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="apparel">Apparel</button>
-        <button class="filter-btn" data-filter="accessories">Accessories</button>
-        <button class="filter-btn" data-filter="home">Home</button>
-        <button class="filter-btn" data-filter="beauty">Beauty</button>
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="apparel">Ropa</button>
+        <button class="filter-btn" data-filter="accessories">Accesorios</button>
+        <button class="filter-btn" data-filter="home">Hogar</button>
+        <button class="filter-btn" data-filter="beauty">Belleza</button>
       </div>
       <div class="product-grid" id="catalogGrid"></div>
     </div>
@@ -160,21 +160,21 @@
   <section class="section section-gray">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">Testimonials</span>
-        <h2 class="section-title">What Our Customers Say</h2>
-        <p class="section-desc">Real feedback from the BLOOPIA community.</p>
+        <span class="section-label">Testimonios</span>
+        <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+        <p class="section-desc">Comentarios reales de la comunidad BLOOPIA.</p>
       </div>
       <div class="testimonials-grid">
         <div class="testimonial-card">
           <div class="testimonial-stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
-          <p class="testimonial-text">"Absolutely in love with the quality and design. Every piece feels curated and intentional. BLOOPIA has completely transformed my wardrobe."</p>
+          <p class="testimonial-text">"Absolutamente enamorada de la calidad y el diseño. Cada pieza se siente seleccionada e intencional. BLOOPIA ha transformado completamente mi guardarropa."</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar" style="background: #d4c9b0;">S</div>
             <div>
-              <strong>Sophia R.</strong>
-              <span>Verified Buyer</span>
+              <strong>Sofía R.</strong>
+              <span>Compradora Verificada</span>
             </div>
           </div>
         </div>
@@ -182,12 +182,12 @@
           <div class="testimonial-stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
-          <p class="testimonial-text">"The minimalist aesthetic is exactly what I was looking for. Fast delivery and beautiful packaging. Will definitely be ordering again!"</p>
+          <p class="testimonial-text">"La estética minimalista es exactamente lo que buscaba. Entrega rápida y empaque hermoso. ¡Definitivamente volveré a pedir!"</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar" style="background: #b8c9b0;">J</div>
             <div>
               <strong>James K.</strong>
-              <span>Verified Buyer</span>
+              <span>Comprador Verificado</span>
             </div>
           </div>
         </div>
@@ -195,12 +195,12 @@
           <div class="testimonial-stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
-          <p class="testimonial-text">"Their home collection is stunning — simple, elegant, and high quality. My apartment finally feels like a home thanks to BLOOPIA."</p>
+          <p class="testimonial-text">"Su colección para el hogar es impresionante: simple, elegante y de alta calidad. Mi apartamento finalmente se siente como un hogar gracias a BLOOPIA."</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar" style="background: #c9b0b0;">E</div>
             <div>
               <strong>Elena M.</strong>
-              <span>Verified Buyer</span>
+              <span>Compradora Verificada</span>
             </div>
           </div>
         </div>
@@ -211,11 +211,11 @@
   <!-- ========== NEWSLETTER ========== -->
   <section class="section newsletter">
     <div class="container newsletter-inner">
-      <h2 class="newsletter-title">Join the BLOOPIA Community</h2>
-      <p class="newsletter-desc">Be the first to know about new arrivals, exclusive drops, and special offers.</p>
+      <h2 class="newsletter-title">Únete a la Comunidad BLOOPIA</h2>
+      <p class="newsletter-desc">Sé el primero en enterarte de nuevos lanzamientos, colecciones exclusivas y ofertas especiales.</p>
       <form class="newsletter-form" id="newsletterForm">
-        <input type="email" placeholder="Enter your email" required />
-        <button type="submit" class="btn btn-primary">Subscribe</button>
+        <input type="email" placeholder="Ingresa tu correo" required />
+        <button type="submit" class="btn btn-primary">Suscribirse</button>
       </form>
     </div>
   </section>
@@ -228,7 +228,7 @@
           <span class="logo-mark">B</span>
           <span class="logo-text">BLOOPIA</span>
         </a>
-        <p class="footer-desc">Modern lifestyle & fashion for the conscious individual. Timeless design, premium quality.</p>
+        <p class="footer-desc">Estilo de vida y moda moderna para la persona consciente. Diseño atemporal, calidad premium.</p>
         <div class="footer-social">
           <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
@@ -237,48 +237,48 @@
         </div>
       </div>
       <div class="footer-col">
-        <h4>Shop</h4>
+        <h4>Tienda</h4>
         <ul>
-          <li><a href="#">Apparel</a></li>
-          <li><a href="#">Accessories</a></li>
-          <li><a href="#">Home & Living</a></li>
-          <li><a href="#">Beauty</a></li>
-          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Ropa</a></li>
+          <li><a href="#">Accesorios</a></li>
+          <li><a href="#">Hogar</a></li>
+          <li><a href="#">Belleza</a></li>
+          <li><a href="#">Novedades</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Company</h4>
+        <h4>Empresa</h4>
         <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Sustainability</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Press</a></li>
+          <li><a href="#">Sobre Nosotros</a></li>
+          <li><a href="#">Sostenibilidad</a></li>
+          <li><a href="#">Empleo</a></li>
+          <li><a href="#">Prensa</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Support</h4>
+        <h4>Soporte</h4>
         <ul>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Shipping & Returns</a></li>
+          <li><a href="#">Contacto</a></li>
+          <li><a href="#">Envíos y Devoluciones</a></li>
           <li><a href="#">FAQ</a></li>
-          <li><a href="#">Size Guide</a></li>
+          <li><a href="#">Guía de Tallas</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Contact</h4>
+        <h4>Contacto</h4>
         <ul class="footer-contact">
           <li><i class="fas fa-envelope"></i> hello@bloopia.com</li>
           <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-          <li><i class="fas fa-map-marker-alt"></i> 123 Design District, NYC</li>
+          <li><i class="fas fa-map-marker-alt"></i> 123 Design District, Nueva York</li>
         </ul>
         <a href="https://wa.me/15551234567" target="_blank" class="btn btn-whatsapp">
-          <i class="fab fa-whatsapp"></i> Order via WhatsApp
+          <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
         </a>
       </div>
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <p>&copy; 2026 BLOOPIA. All rights reserved.</p>
+        <p>&copy; 2026 BLOOPIA. Todos los derechos reservados.</p>
       </div>
     </div>
   </footer>
@@ -287,14 +287,14 @@
   <div class="cart-overlay" id="cartOverlay"></div>
   <div class="cart-sidebar" id="cartSidebar">
     <div class="cart-header">
-      <h3>Your Cart</h3>
+      <h3>Tu Carrito</h3>
       <button id="cartClose"><i class="fas fa-times"></i></button>
     </div>
     <div class="cart-items" id="cartItems">
       <div class="cart-empty">
         <i class="fas fa-shopping-bag"></i>
-        <p>Your cart is empty</p>
-        <span>Add some products to get started</span>
+        <p>Tu carrito está vacío</p>
+        <span>Agrega algunos productos para empezar</span>
       </div>
     </div>
     <div class="cart-footer" id="cartFooter">
@@ -303,13 +303,13 @@
         <span id="cartTotal">$0.00</span>
       </div>
       <button class="btn btn-primary cart-checkout" id="checkoutBtn">
-        <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
+        <i class="fab fa-whatsapp"></i> Pagar por WhatsApp
       </button>
     </div>
   </div>
 
   <!-- ========== BACK TO TOP ========== -->
-  <button class="back-to-top" id="backToTop" aria-label="Back to Top">
+  <button class="back-to-top" id="backToTop" aria-label="Volver Arriba">
     <i class="fas fa-chevron-up"></i>
   </button>
 

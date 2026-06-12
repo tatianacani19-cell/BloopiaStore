@@ -5,6 +5,13 @@ function saveCart() {
   localStorage.setItem('bloopiaCart', JSON.stringify(cart));
 }
 
+const categoryNames = {
+  apparel: 'Ropa',
+  accessories: 'Accesorios',
+  home: 'Hogar',
+  beauty: 'Belleza',
+};
+
 // ========== RENDER PRODUCTS ==========
 function renderProducts(gridId, items) {
   const grid = document.getElementById(gridId);
@@ -23,10 +30,10 @@ function renderProducts(gridId, items) {
       </div>
       <div class="product-body">
         <h3 class="product-name">${p.name}</h3>
-        <span class="product-category-tag">${p.category}</span>
+        <span class="product-category-tag">${categoryNames[p.category] || p.category}</span>
         <span class="product-price">$${p.price.toFixed(2)}</span>
         <button class="add-to-cart" data-id="${p.id}">
-          <i class="fas fa-plus"></i> Add to Cart
+          <i class="fas fa-plus"></i> Agregar al Carrito
         </button>
       </div>
     </div>
@@ -73,7 +80,7 @@ function addToCart(productId) {
 
   saveCart();
   updateCartUI();
-  showNotification(`${product.name} added to cart`);
+  showNotification(`${product.name} agregado al carrito`);
 }
 
 function removeFromCart(productId) {
@@ -116,8 +123,8 @@ function updateCartUI() {
       itemsEl.innerHTML = `
         <div class="cart-empty">
           <i class="fas fa-shopping-bag"></i>
-          <p>Your cart is empty</p>
-          <span>Add some products to get started</span>
+          <p>Tu carrito está vacío</p>
+          <span>Agrega algunos productos para empezar</span>
         </div>
       `;
     }
@@ -167,19 +174,19 @@ function showNotification(message) {
 // ========== WHATSAPP CHECKOUT ==========
 function checkoutWhatsApp() {
   if (cart.length === 0) {
-    showNotification('Your cart is empty!');
+    showNotification('¡Tu carrito está vacío!');
     return;
   }
 
   const phone = '15551234567';
-  let message = 'Hello! I would like to order the following from BLOOPIA:\n\n';
+  let message = '¡Hola! Me gustaría pedir lo siguiente de BLOOPIA:\n\n';
 
   cart.forEach(item => {
     message += `• ${item.name} x${item.qty} — $${(item.price * item.qty).toFixed(2)}\n`;
   });
 
   message += `\nTotal: $${getCartTotal().toFixed(2)}`;
-  message += '\n\nPlease confirm availability and shipping. Thank you!';
+  message += '\n\nPor favor confirma disponibilidad y envío. ¡Gracias!';
 
   const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
   window.open(url, '_blank');
@@ -282,7 +289,7 @@ document.getElementById('newsletterForm')?.addEventListener('submit', (e) => {
   e.preventDefault();
   const input = e.target.querySelector('input');
   if (input.value.trim()) {
-    showNotification('Thanks for subscribing!');
+    showNotification('¡Gracias por suscribirte!');
     input.value = '';
   }
 });
