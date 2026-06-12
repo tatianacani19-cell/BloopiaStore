@@ -25,7 +25,8 @@ function renderProducts(gridId, items) {
   grid.innerHTML = items.map(p => `
     <div class="product-card" data-category="${p.category}">
       <div class="product-image-wrap">
-        <img src="${p.image}" alt="${p.name}" loading="lazy" />
+        <img src="${p.image}" alt="${p.name}" loading="lazy" class="product-img-default" />
+        ${p.hoverImage ? `<img src="${p.hoverImage}" alt="${p.name}" loading="lazy" class="product-img-hover" />` : ''}
         ${p.badge ? `<span class="product-badge ${p.badge.toLowerCase()}">${p.badge}</span>` : ''}
       </div>
       <div class="product-body">
