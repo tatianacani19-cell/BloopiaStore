@@ -395,6 +395,148 @@ function initPromoSlider() {
   startAuto();
 }
 
+// ========== HERO CURSOR EFFECT ==========
+function initHeroCursor() {
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
+
+  const hero = document.getElementById('heroSlider');
+  const canvas = document.getElementById('heroCursorCanvas');
+  if (!hero || !canvas) return;
+
+  const originalOverlay = 'linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.25) 100%)';
+  const ctx = canvas.getContext('2d');
+  let mouseX = 0, mouseY = 0;
+  let orbX = 0, orbY = 0;
+  let spotX = 0, spotY = 0;
+  let isInside = false;
+  let orbRadius = 6;
+  let targetRadius = 6;
+  let particles = [];
+  let animFrame;
+
+  function getActiveOverlay() {
+    const active = hero.querySelector('.hero-slide.active .hero-overlay');
+    return active || hero.querySelector('.hero-overlay');
+  }
+
+  function resize() {
+    const rect = hero.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+  }
+
+  function lerp(a, b, t) {
+    return a + (b - a) * t;
+  }
+
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    mouseX = e.clientX - rect.left;
+    mouseY = e.clientY - rect.top;
+    if (!isInside) {
+      orbX = mouseX;
+      orbY = mouseY;
+      spotX = mouseX;
+      spotY = mouseY;
+    }
+    isInside = true;
+
+    const target = e.target;
+    targetRadius = target.closest('.btn, .hero-arrow, .hero-dot') ? 11 : 6;
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    isInside = false;
+    const overlay = getActiveOverlay();
+    if (overlay) overlay.style.background = originalOverlay;
+  });
+
+  function spawnParticles() {
+    if (!isInside) return;
+    for (let i = 0; i < 2; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 0.3 + Math.random() * 0.6;
+      particles.push({
+        x: orbX, y: orbY,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        life: 1,
+        size: 1.5 + Math.random() * 2,
+        color: Math.random() > 0.5 ? '88,197,175' : '116,112,229'
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (!isInside && particles.length === 0) {
+      animFrame = requestAnimationFrame(draw);
+      return;
+    }
+
+    orbX = lerp(orbX, mouseX, 0.1);
+    orbY = lerp(orbY, mouseY, 0.1);
+    orbRadius = lerp(orbRadius, targetRadius, 0.08);
+
+    spotX = lerp(spotX, mouseX, 0.06);
+    spotY = lerp(spotY, mouseY, 0.06);
+    const overlay = getActiveOverlay();
+    if (overlay) {
+      overlay.style.background = isInside
+        ? `radial-gradient(500px circle at ${spotX}px ${spotY}px, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.2) 25%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.6) 100%), ${originalOverlay}`
+        : originalOverlay;
+    }
+
+    spawnParticles();
+
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.life -= 0.018;
+      p.vx *= 0.97;
+      p.vy *= 0.97;
+
+      if (p.life <= 0) { particles.splice(i, 1); continue; }
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${p.color}, ${p.life * 0.5})`;
+      ctx.fill();
+    }
+
+    if (isInside) {
+      const glow = ctx.createRadialGradient(orbX, orbY, 0, orbX, orbY, orbRadius * 5);
+      glow.addColorStop(0, 'rgba(116,112,229,0.12)');
+      glow.addColorStop(0.4, 'rgba(88,197,175,0.06)');
+      glow.addColorStop(1, 'rgba(116,112,229,0)');
+      ctx.beginPath();
+      ctx.arc(orbX, orbY, orbRadius * 5, 0, Math.PI * 2);
+      ctx.fillStyle = glow;
+      ctx.fill();
+
+      const orbGrad = ctx.createRadialGradient(
+        orbX - orbRadius * 0.25, orbY - orbRadius * 0.25, 0,
+        orbX, orbY, orbRadius
+      );
+      orbGrad.addColorStop(0, 'rgba(88,197,175,0.85)');
+      orbGrad.addColorStop(0.5, 'rgba(116,112,229,0.6)');
+      orbGrad.addColorStop(1, 'rgba(116,112,229,0.05)');
+      ctx.beginPath();
+      ctx.arc(orbX, orbY, orbRadius, 0, Math.PI * 2);
+      ctx.fillStyle = orbGrad;
+      ctx.fill();
+    }
+
+    animFrame = requestAnimationFrame(draw);
+  }
+
+  resize();
+  draw();
+  window.addEventListener('resize', resize);
+}
+
 // ========== BACK TO TOP ==========
 document.getElementById('backToTop')?.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -403,6 +545,7 @@ document.getElementById('backToTop')?.addEventListener('click', () => {
 // ========== INIT ==========
 document.addEventListener('DOMContentLoaded', () => {
   initHeroSlider();
+  initHeroCursor();
   initPromoSlider();
   initProducts();
   updateCartUI();
