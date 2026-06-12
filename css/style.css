@@ -699,11 +699,11 @@ input { font-family: inherit; }
   color: var(--white);
 }
 
-.product-badge.sale {
+.product-badge.imperdible {
   background: var(--brand-green);
 }
 
-.product-badge.bestseller {
+.product-badge.top {
   background: var(--brand-purple-dark);
 }
 
