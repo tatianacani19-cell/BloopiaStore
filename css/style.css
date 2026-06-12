@@ -159,29 +159,13 @@ input { font-family: inherit; }
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
   z-index: 1001;
 }
 
-.logo-mark {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: var(--text);
-  color: var(--white);
-  font-size: 1rem;
-  font-weight: 700;
-  border-radius: 8px;
-  letter-spacing: 0;
-}
-
-.logo-text {
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: 3px;
-  color: var(--text);
+.logo-img {
+  height: 50px;
+  width: auto;
+  display: block;
 }
 
 .nav-menu {
