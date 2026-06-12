@@ -865,7 +865,7 @@ input { font-family: inherit; }
   flex-direction: column;
   justify-content: center;
   padding: 60px 56px;
-  background: linear-gradient(145deg, var(--brand-purple) 0%, var(--brand-purple-dark) 100%);
+  background: linear-gradient(145deg, #b8b5f0 0%, var(--brand-purple-light) 100%);
   position: relative;
   z-index: 2;
 }
