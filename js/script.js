@@ -461,7 +461,7 @@ function initHeroCursor() {
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed,
         life: 1,
-        size: 1.5 + Math.random() * 2,
+        size: 3 + Math.random() * 4,
         color: Math.random() > 0.5 ? '88,197,175' : '116,112,229'
       });
     }
