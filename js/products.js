@@ -11,8 +11,12 @@ const products = [
   { id: 10, name: "Serum Facial", category: "beauty", price: 48.00, image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&q=80", hoverImage: "https://images.unsplash.com/photo-1570194065650-d99fb4b38c34?w=600&q=80", badge: null },
   { id: 11, name: "Blazer de Lana", category: "apparel", price: 175.00, image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80", hoverImage: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80", badge: null },
   { id: 12, name: "Difusor de Bambú", category: "beauty", price: 36.00, image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600&q=80", hoverImage: "https://images.unsplash.com/photo-1600612253971-422e7f7faeb6?w=600&q=80", badge: "Nuevo" },
+  { id: 13, name: "Mochila de Cuero", category: "accessories", price: 158.00, image: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=600&q=80", hoverImage: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80", badge: "Nuevo" },
+  { id: 14, name: "Lámpara de Mesa", category: "home", price: 72.00, image: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600&q=80", hoverImage: "https://images.unsplash.com/photo-1507473885765-e6ed057ab6fe?w=600&q=80", badge: "Nuevo" },
+  { id: 15, name: "Set de Mascarillas", category: "beauty", price: 28.00, image: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=600&q=80", hoverImage: "https://images.unsplash.com/photo-1603006905003-be475563bc59?w=600&q=80", badge: "Nuevo" },
+  { id: 16, name: "Pantalón de Lino", category: "apparel", price: 98.00, image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600&q=80", hoverImage: "https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=600&q=80", badge: "Nuevo" },
 ];
 
 function getFeaturedProducts() {
-  return products.filter(p => p.badge === "Nuevo" || p.badge === "Más Vendido" || p.badge === "Oferta").slice(0, 4);
+  return products.filter(p => p.badge === "Nuevo" || p.badge === "Más Vendido" || p.badge === "Oferta").slice(0, 8);
 }
