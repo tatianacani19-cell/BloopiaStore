@@ -542,11 +542,45 @@ document.getElementById('backToTop')?.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+// ========== TRUST CAROUSEL ==========
+function initTrustCarousel() {
+  const track = document.getElementById('trustGrid');
+  const dots = document.querySelectorAll('.trust-dot');
+  const cards = track?.querySelectorAll('.trust-card');
+  if (!track || !cards?.length) return;
+
+  let current = 0;
+
+  function syncFromScroll() {
+    const idx = Math.round(track.scrollLeft / track.offsetWidth);
+    if (idx === current) return;
+    current = idx;
+    cards.forEach((c, i) => c.classList.toggle('active', i === idx));
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+  }
+
+  function goTo(index) {
+    current = index;
+    cards.forEach((c, i) => c.classList.toggle('active', i === index));
+    track.scrollTo({ left: track.offsetWidth * index, behavior: 'smooth' });
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+  }
+
+  cards[0].classList.add('active');
+
+  track.addEventListener('scroll', syncFromScroll);
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => goTo(parseInt(dot.dataset.index)));
+  });
+}
+
 // ========== INIT ==========
 document.addEventListener('DOMContentLoaded', () => {
   initHeroSlider();
   initHeroCursor();
   initPromoSlider();
+  initTrustCarousel();
   initProducts();
   updateCartUI();
 });
