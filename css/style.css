@@ -33,6 +33,9 @@
   --brand-purple-bg: #f0effd;
 }
 
+::selection { background: var(--brand-purple); color: #fff; }
+::-moz-selection { background: var(--brand-purple); color: #fff; }
+
 html { scroll-behavior: smooth; }
 
 body {
