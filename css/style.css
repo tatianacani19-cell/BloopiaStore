@@ -1875,6 +1875,27 @@ input { font-family: inherit; }
 
   .product-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
 
+  #featuredGrid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    gap: 12px;
+    padding-bottom: 4px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  #featuredGrid::-webkit-scrollbar {
+    display: none;
+  }
+
+  #featuredGrid .product-card {
+    flex: 0 0 calc(50% - 6px);
+    scroll-snap-align: start;
+  }
+
   .promo-banner { min-height: 360px; background-attachment: fixed; }
   .promo-content { padding: 180px 0 80px; }
 
