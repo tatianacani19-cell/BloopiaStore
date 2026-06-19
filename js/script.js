@@ -49,6 +49,44 @@ function renderProducts(gridId, items) {
 function initProducts() {
   const featured = getFeaturedProducts();
   renderProducts('featuredGrid', featured);
+  initFeaturedCarousel();
+}
+
+function initFeaturedCarousel() {
+  const grid = document.getElementById('featuredGrid');
+  const dotsContainer = document.getElementById('featuredDots');
+  const hint = document.getElementById('swipeHint');
+  if (!grid || !dotsContainer) return;
+
+  const cards = grid.querySelectorAll('.product-card');
+  const pages = Math.ceil(cards.length / 2);
+
+  if (pages <= 1) {
+    dotsContainer.style.display = 'none';
+    if (hint) hint.style.display = 'none';
+    return;
+  }
+
+  for (let i = 0; i < pages; i++) {
+    const dot = document.createElement('span');
+    if (i === 0) dot.classList.add('active');
+    dotsContainer.appendChild(dot);
+  }
+
+  grid.addEventListener('scroll', () => {
+    const scrollLeft = grid.scrollLeft;
+    const scrollWidth = grid.scrollWidth - grid.clientWidth;
+    const progress = scrollWidth > 0 ? scrollLeft / scrollWidth : 0;
+    const activeIndex = Math.min(Math.round(progress * (pages - 1)), pages - 1);
+
+    if (hint) {
+      hint.style.display = activeIndex === 0 ? 'flex' : 'none';
+    }
+
+    dotsContainer.querySelectorAll('span').forEach((dot, i) => {
+      dot.classList.toggle('active', i === activeIndex);
+    });
+  });
 }
 
 // ========== CART FUNCTIONS ==========
