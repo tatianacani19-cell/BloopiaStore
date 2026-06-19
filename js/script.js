@@ -22,8 +22,8 @@ function renderProducts(gridId, items) {
     return;
   }
 
-  grid.innerHTML = items.map(p => `
-    <div class="product-card" data-category="${p.category}">
+  grid.innerHTML = items.map((p, i) => `
+    <div class="product-card reveal-stagger reveal-up" data-category="${p.category}" style="transition-delay:${i * 80}ms">
       <div class="product-image-wrap">
         <img src="${p.image}" alt="${p.name}" loading="lazy" class="product-img-default" />
         ${p.hoverImage ? `<img src="${p.hoverImage}" alt="${p.name}" loading="lazy" class="product-img-hover" />` : ''}
@@ -634,4 +634,31 @@ document.addEventListener('DOMContentLoaded', () => {
   initTrustCarousel();
   initProducts();
   updateCartUI();
+  initRevealAnimations();
 });
+
+// ========== REVEAL ANIMATIONS ==========
+function initRevealAnimations() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+
+      if (el.classList.contains('reveal-stagger-children')) {
+        el.querySelectorAll(':scope > .reveal-stagger').forEach((child, i) => {
+          setTimeout(() => child.classList.add('active'), i * 80);
+        });
+      }
+
+      el.classList.add('active');
+      observer.unobserve(el);
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px',
+  });
+
+  document.querySelectorAll('.reveal:not(.reveal-stagger-children), .reveal-stagger-children').forEach((el) => {
+    observer.observe(el);
+  });
+}

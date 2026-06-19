@@ -1729,6 +1729,67 @@ input { font-family: inherit; }
   display: none;
 }
 
+/* ========== REVEAL ANIMATIONS ========== */
+.reveal {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-up {
+  transform: translateY(40px);
+}
+
+.reveal-down {
+  transform: translateY(-40px);
+}
+
+.reveal-zoom {
+  transform: scale(0.92);
+}
+
+.reveal-fade {
+  transform: none;
+}
+
+.reveal-lift {
+  transform: translateY(20px);
+}
+
+.reveal-lift.active {
+  transform: translateY(-2px);
+}
+
+.reveal-stagger-children > .reveal-stagger {
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-stagger-children > .reveal-stagger.active {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-stagger-children > .reveal-stagger:nth-child(1) { transition-delay: 0ms; }
+.reveal-stagger-children > .reveal-stagger:nth-child(2) { transition-delay: 80ms; }
+.reveal-stagger-children > .reveal-stagger:nth-child(3) { transition-delay: 160ms; }
+.reveal-stagger-children > .reveal-stagger:nth-child(4) { transition-delay: 240ms; }
+.reveal-stagger-children > .reveal-stagger:nth-child(5) { transition-delay: 320ms; }
+.reveal-stagger-children > .reveal-stagger:nth-child(6) { transition-delay: 400ms; }
+.reveal-stagger-children > .reveal-stagger:nth-child(7) { transition-delay: 480ms; }
+.reveal-stagger-children > .reveal-stagger:nth-child(8) { transition-delay: 560ms; }
+.reveal-stagger-children > .reveal-stagger:nth-child(9) { transition-delay: 640ms; }
+.reveal-stagger-children > .reveal-stagger:nth-child(10) { transition-delay: 720ms; }
+.reveal-stagger-children > .reveal-stagger:nth-child(11) { transition-delay: 800ms; }
+.reveal-stagger-children > .reveal-stagger:nth-child(12) { transition-delay: 880ms; }
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
   .categories-grid { grid-template-columns: repeat(2, 1fr); }
