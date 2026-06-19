@@ -237,19 +237,38 @@ window.addEventListener('scroll', () => {
 
 // ========== MOBILE MENU ==========
 const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('navMenu');
+const mobMenu = document.getElementById('mobMenu');
+const mobOverlay = document.getElementById('mobMenuOverlay');
+const mobClose = document.getElementById('mobMenuClose');
 
-if (hamburger && navMenu) {
+function openMobMenu() {
+  hamburger?.classList.add('active');
+  mobMenu?.classList.add('active');
+  mobOverlay?.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobMenu() {
+  hamburger?.classList.remove('active');
+  mobMenu?.classList.remove('active');
+  mobOverlay?.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+if (hamburger && mobMenu) {
   hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
+    if (mobMenu.classList.contains('active')) {
+      closeMobMenu();
+    } else {
+      openMobMenu();
+    }
   });
 
-  navMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      navMenu.classList.remove('active');
-    });
+  if (mobClose) mobClose.addEventListener('click', closeMobMenu);
+  if (mobOverlay) mobOverlay.addEventListener('click', closeMobMenu);
+
+  mobMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMobMenu);
   });
 }
 
