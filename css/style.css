@@ -1342,11 +1342,11 @@ input { font-family: inherit; }
   display: flex;
   justify-content: center;
   gap: 14px;
-  flex-wrap: wrap;
 }
 
 .auth-buttons .btn {
-  min-width: 180px;
+  flex: 1;
+  max-width: 220px;
 }
 
 .auth-buttons .btn-outline {
@@ -2087,7 +2087,48 @@ input { font-family: inherit; }
   }
   .promo-arrow { display: none; }
 
-  .footer-grid { grid-template-columns: 1fr; }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 40px 16px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-brand .logo .logo-img {
+    height: 40px;
+  }
+
+  .footer-col h4 {
+    margin-bottom: 14px;
+    font-size: 0.78rem;
+  }
+
+  .footer-col ul li {
+    margin-bottom: 8px;
+  }
+
+  .footer-col ul li a,
+  .footer-contact li {
+    font-size: 0.8rem;
+  }
+
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-contact li {
+    margin-bottom: 0;
+  }
+
+  .btn-whatsapp {
+    font-size: 0.78rem;
+    padding: 10px 16px;
+  }
 
   .back-to-top { bottom: 20px; right: 20px; width: 42px; height: 42px; }
 }
