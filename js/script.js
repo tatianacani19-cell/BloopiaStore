@@ -645,6 +645,32 @@ function initSmoothScroll() {
   return lenis;
 }
 
+// ========== CATEGORY HOVER DIMMING ==========
+function initCategoryDimming() {
+  const isDesktop = () => window.innerWidth >= 1025;
+  const cards = document.querySelectorAll('.category-card');
+
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      if (!isDesktop()) return;
+      cards.forEach(c => {
+        if (c !== card) c.classList.add('is-dimmed');
+      });
+    });
+
+    card.addEventListener('mouseleave', () => {
+      if (!isDesktop()) return;
+      cards.forEach(c => c.classList.remove('is-dimmed'));
+    });
+  });
+
+  window.addEventListener('resize', () => {
+    if (!isDesktop()) {
+      cards.forEach(c => c.classList.remove('is-dimmed'));
+    }
+  });
+}
+
 // ========== INIT ==========
 document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
@@ -656,6 +682,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initProducts();
   updateCartUI();
   initRevealAnimations();
+  initCategoryDimming();
 });
 
 // ========== REVEAL ANIMATIONS ==========

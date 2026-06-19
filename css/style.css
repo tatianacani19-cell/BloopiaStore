@@ -676,6 +676,8 @@ input { font-family: inherit; }
 
 
 .category-info {
+  position: relative;
+  z-index: 2;
   padding: 28px;
   width: 100%;
 }
@@ -707,6 +709,69 @@ input { font-family: inherit; }
 
 .category-card:hover .category-info span i {
   transform: translateX(4px);
+}
+
+/* ========== CATEGORIES HOVER EFFECTS (DESKTOP ONLY) ========== */
+@media (min-width: 1025px) {
+  .category-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(0,0,0,0);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    opacity: 0;
+    transition: opacity 0.4s ease,
+                background 0.4s ease,
+                backdrop-filter 0.4s ease;
+    pointer-events: none;
+  }
+
+  .category-card {
+    background-size: cover;
+    transition: background-size 0.5s ease,
+                transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.3s ease,
+                opacity 0.4s ease;
+  }
+
+  .category-card:hover {
+    background-size: 108%;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .category-card:hover .category-overlay {
+    opacity: 1;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .category-desc {
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 8px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.35s ease 0.1s,
+                transform 0.35s ease 0.1s;
+  }
+
+  .category-card:hover .category-desc {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .category-card.is-dimmed {
+    opacity: 0.65;
+  }
+
+  .category-card.is-dimmed .category-overlay {
+    opacity: 1;
+    background: rgba(0,0,0,0.2);
+  }
 }
 
 /* ========== PRODUCT GRID ========== */
@@ -1792,6 +1857,8 @@ input { font-family: inherit; }
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
+  .category-overlay { display: none; }
+  .category-desc { display: none; }
   .categories-grid { grid-template-columns: repeat(2, 1fr); }
   .product-grid { grid-template-columns: repeat(3, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
