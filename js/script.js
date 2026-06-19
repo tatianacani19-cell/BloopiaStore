@@ -625,8 +625,29 @@ function initAnnouncementBar() {
   });
 }
 
+// ========== SMOOTH SCROLL ==========
+function initSmoothScroll() {
+  const lenis = new Lenis({
+    duration: 1.5,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    wheelMultiplier: 1,
+    touchMultiplier: 1.5,
+    gestureOrientation: 'vertical',
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
+  return lenis;
+}
+
 // ========== INIT ==========
 document.addEventListener('DOMContentLoaded', () => {
+  initSmoothScroll();
   initAnnouncementBar();
   initHeroSlider();
   initHeroCursor();
