@@ -1720,7 +1720,8 @@ input { font-family: inherit; }
 
   .product-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
 
-  .promo-banner { min-height: 320px; background-attachment: scroll; }
+  .promo-banner { min-height: 360px; background-attachment: fixed; }
+  .promo-content { padding: 180px 0 80px; }
 
   .promo-slider { height: auto; }
   .promo-slide {
