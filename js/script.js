@@ -10,6 +10,7 @@ const categoryNames = {
   accessories: 'Accesorios',
   home: 'Hogar',
   beauty: 'Belleza',
+  babies: 'Bebés',
 };
 
 // ========== RENDER PRODUCTS ==========
