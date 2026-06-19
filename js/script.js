@@ -253,6 +253,10 @@ function closeMobMenu() {
   mobMenu?.classList.remove('active');
   mobOverlay?.classList.remove('active');
   document.body.style.overflow = '';
+  const catToggle = mobMenu?.querySelector('.mob-cat-toggle');
+  const catSection = mobMenu?.querySelector('.mob-menu-categories');
+  catToggle?.classList.remove('open');
+  catSection?.classList.remove('open');
 }
 
 if (hamburger && mobMenu) {
@@ -267,7 +271,18 @@ if (hamburger && mobMenu) {
   if (mobClose) mobClose.addEventListener('click', closeMobMenu);
   if (mobOverlay) mobOverlay.addEventListener('click', closeMobMenu);
 
-  mobMenu.querySelectorAll('a').forEach(link => {
+  const catToggle = mobMenu.querySelector('.mob-cat-toggle');
+  const catSection = mobMenu.querySelector('.mob-menu-categories');
+  if (catToggle && catSection) {
+    catToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      catToggle.classList.toggle('open');
+      catSection.classList.toggle('open');
+    });
+  }
+
+  mobMenu.querySelectorAll('a:not(.mob-cat-toggle)').forEach(link => {
     link.addEventListener('click', closeMobMenu);
   });
 }
