@@ -22,6 +22,7 @@
   --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-heading: 'Playfair Display', Georgia, serif;
   --nav-height: 72px;
+  --announcement-height: 38px;
 
   --brand-green: #58c5af;
   --brand-green-light: #7ed6c4;
@@ -167,7 +168,7 @@ input { font-family: inherit; }
 /* ========== NAVBAR ========== */
 .navbar {
   position: fixed;
-  top: 0;
+  top: var(--announcement-height);
   left: 0;
   right: 0;
   height: var(--nav-height);
@@ -400,11 +401,90 @@ input { font-family: inherit; }
   background: var(--cream);
 }
 
+/* ========== ANNOUNCEMENT BAR ========== */
+.announcement-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--announcement-height);
+  background: var(--brand-purple);
+  z-index: 999;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.announcement-track {
+  display: flex;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 45s linear infinite;
+  padding-right: 44px;
+}
+
+.announcement-content {
+  padding: 0 2rem;
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 500;
+  font-family: var(--font);
+  line-height: var(--announcement-height);
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.announcement-close {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 0.75rem;
+  border-radius: 50%;
+  transition: var(--transition);
+  z-index: 2;
+  background: var(--brand-purple-dark);
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+}
+
+.announcement-close:hover {
+  background: var(--brand-purple);
+  border-color: rgba(255,255,255,0.4);
+}
+
+.announcement-bar.is-hidden {
+  transform: translateY(-100%);
+}
+
+/* Pause on hover for accessibility */
+.announcement-bar:hover .announcement-track {
+  animation-play-state: paused;
+}
+
 /* ========== HERO SLIDER ========== */
 .hero {
   position: relative;
   min-height: 90vh;
-  margin-top: var(--nav-height);
+  margin-top: calc(var(--nav-height) + var(--announcement-height));
+  transition: margin-top 0.35s ease;
   overflow: hidden;
 }
 
@@ -1623,7 +1703,7 @@ input { font-family: inherit; }
 /* ========== NOTIFICATION ========== */
 .notification {
   position: fixed;
-  top: 88px;
+  top: calc(var(--nav-height) + var(--announcement-height) + 16px);
   right: 24px;
   background: var(--brand-purple);
   color: var(--white);

@@ -575,8 +575,21 @@ function initTrustCarousel() {
   });
 }
 
+// ========== ANNOUNCEMENT BAR ==========
+function initAnnouncementBar() {
+  const bar = document.getElementById('announcementBar');
+  const closeBtn = document.getElementById('announcementClose');
+  if (!bar || !closeBtn) return;
+
+  closeBtn.addEventListener('click', () => {
+    bar.classList.add('is-hidden');
+    document.documentElement.style.setProperty('--announcement-height', '0px');
+  });
+}
+
 // ========== INIT ==========
 document.addEventListener('DOMContentLoaded', () => {
+  initAnnouncementBar();
   initHeroSlider();
   initHeroCursor();
   initPromoSlider();
