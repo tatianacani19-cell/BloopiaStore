@@ -2658,9 +2658,10 @@ input { font-family: inherit; }
   .subcat-arrow { display: none !important; }
   .subcat-track { padding: 10px 16px; }
   .subcat-banner { min-height: 240px; }
-  .subcat-banner-content { padding: 40px 0; }
-  .subcat-banner-features { gap: 8px; }
-  .subcat-banner-features li { font-size: 0.78rem; padding: 6px 14px; }
+  .subcat-banner-content { padding: 40px 28px; }
+  .subcat-banner-features { gap: 6px; flex-wrap: nowrap; }
+  .subcat-banner-features li { font-size: 0.75rem; padding: 6px 12px; white-space: nowrap; }
+  .subcat-banner-features li:nth-child(n+3) { display: none; }
 }
 
 @media (max-width: 480px) {
@@ -2670,7 +2671,10 @@ input { font-family: inherit; }
   .subcat-track { padding: 8px 12px; }
   .subcat-btn { padding: 6px 14px; font-size: 0.75rem; }
   .subcat-banner { min-height: 200px; }
-  .subcat-banner-content { padding: 30px 0; }
+  .subcat-banner-content { padding: 30px 20px; }
+  .subcat-banner-features { gap: 6px; flex-wrap: nowrap; }
+  .subcat-banner-features li { font-size: 0.72rem; padding: 5px 10px; white-space: nowrap; }
+  .subcat-banner-features li:nth-child(n+3) { display: none; }
 }
 
 /* ========== PROMO CAROUSEL ========== */
