@@ -131,12 +131,8 @@ function initCategoryPage() {
   renderSubcategoryNav(config);
   renderProducts();
 
-  const firstSub = config.subcategories[0];
-  if (firstSub && firstSub.banner) {
-    activateSubcategory(config.subcategories[0]);
-  } else if (config.subcategories[1] && config.subcategories[1].banner) {
-    activateSubcategory(config.subcategories[1]);
-  }
+  const defaultSub = config.subcategories.find(s => s.key === currentSubcategory) || config.subcategories[0];
+  if (defaultSub) activateSubcategory(defaultSub);
 }
 
 function renderHero(config) {
