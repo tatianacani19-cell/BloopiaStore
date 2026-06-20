@@ -320,12 +320,14 @@ const cartOverlay = document.getElementById('cartOverlay');
 const cartClose = document.getElementById('cartClose');
 
 function openCart() {
+  if (!cartSidebar || !cartOverlay) return;
   cartSidebar.classList.add('active');
   cartOverlay.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
 
 function closeCart() {
+  if (!cartSidebar || !cartOverlay) return;
   cartSidebar.classList.remove('active');
   cartOverlay.classList.remove('active');
   document.body.style.overflow = '';
