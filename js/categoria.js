@@ -174,6 +174,34 @@ function renderSubcategoryNav(config) {
       renderProducts();
     });
   });
+
+  initSubcatArrows();
+}
+
+function initSubcatArrows() {
+  const track = document.getElementById('subcatTrack');
+  const leftArrow = document.getElementById('subcatArrowLeft');
+  const rightArrow = document.getElementById('subcatArrowRight');
+  if (!track || !leftArrow || !rightArrow) return;
+
+  function updateArrows() {
+    const atStart = track.scrollLeft <= 2;
+    const atEnd = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+    leftArrow.classList.toggle('visible', !atStart);
+    rightArrow.classList.toggle('visible', !atEnd);
+  }
+
+  leftArrow.addEventListener('click', () => {
+    track.scrollBy({ left: -280, behavior: 'smooth' });
+  });
+
+  rightArrow.addEventListener('click', () => {
+    track.scrollBy({ left: 280, behavior: 'smooth' });
+  });
+
+  track.addEventListener('scroll', updateArrows);
+  window.addEventListener('resize', updateArrows);
+  updateArrows();
 }
 
 function activateSubcategory(subData) {
