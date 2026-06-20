@@ -290,6 +290,51 @@ function renderProducts() {
   }
 }
 
+function initPromoCarousel() {
+  const track = document.getElementById('promoCarouselTrack');
+  const slides = track?.querySelectorAll('.promo-carousel-slide');
+  const dots = document.querySelectorAll('.promo-carousel-dot');
+  const prevBtn = document.getElementById('promoCarouselPrev');
+  const nextBtn = document.getElementById('promoCarouselNext');
+  if (!slides?.length) return;
+
+  let current = 0;
+  let interval = null;
+  const DELAY = 5000;
+
+  function goTo(index) {
+    slides.forEach((s, i) => s.classList.toggle('active', i === index));
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    current = index;
+  }
+
+  function next() { goTo((current + 1) % slides.length); }
+  function prev() { goTo((current - 1 + slides.length) % slides.length); }
+
+  function startAuto() { stopAuto(); interval = setInterval(next, DELAY); }
+  function stopAuto() { if (interval) { clearInterval(interval); interval = null; } }
+  function restartAuto() { stopAuto(); startAuto(); }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => { prev(); restartAuto(); });
+  if (nextBtn) nextBtn.addEventListener('click', () => { next(); restartAuto(); });
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.dataset.index);
+      if (idx !== current) { goTo(idx); restartAuto(); }
+    });
+  });
+
+  const carousel = document.getElementById('promoCarousel');
+  if (carousel) {
+    carousel.addEventListener('mouseenter', stopAuto);
+    carousel.addEventListener('mouseleave', startAuto);
+  }
+
+  startAuto();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initCategoryPage();
+  initPromoCarousel();
 });
