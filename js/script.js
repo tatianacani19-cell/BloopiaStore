@@ -720,7 +720,66 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartUI();
   initRevealAnimations();
   initCategoryDimming();
+  initCounters();
 });
+
+// ========== COUNTER ANIMATION ==========
+function initCounters() {
+  const counters = document.querySelectorAll('.promo-stat-number[data-target]');
+  if (!counters.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      const duration = 2000;
+      const start = performance.now();
+
+      function formatNumber(n) {
+        return n.toLocaleString('en-US');
+      }
+
+      function update(currentTime) {
+        const elapsed = currentTime - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(eased * target);
+
+        const plusSpan = el.querySelector('.promo-stat-plus');
+        const numberText = formatNumber(current);
+        if (plusSpan) {
+          el.childNodes.forEach((node) => {
+            if (node.nodeType === Node.TEXT_NODE) {
+              node.textContent = numberText;
+            }
+          });
+        } else {
+          el.textContent = numberText;
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          if (plusSpan) {
+            el.childNodes.forEach((node) => {
+              if (node.nodeType === Node.TEXT_NODE) {
+                node.textContent = formatNumber(target);
+              }
+            });
+          } else {
+            el.textContent = formatNumber(target);
+          }
+        }
+      }
+
+      requestAnimationFrame(update);
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach((el) => observer.observe(el));
+}
 
 // ========== REVEAL ANIMATIONS ==========
 function initRevealAnimations() {
