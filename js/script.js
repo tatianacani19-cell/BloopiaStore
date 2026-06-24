@@ -1,3 +1,43 @@
+// ========== TOP BAR ==========
+function initTopBar() {
+  const slideEl = document.getElementById('topBarSlide');
+  const prevBtn = document.getElementById('topBarPrev');
+  const nextBtn = document.getElementById('topBarNext');
+  if (!slideEl) return;
+
+  const phrases = [
+    '💜 Innovación para cada espacio de tu vida',
+    '🔥 Ofertas todos los días en tecnología, hogar, bebés y más',
+    '✨ Envíos seguros a todo el país',
+    '📦 Productos de la mejor calidad para tu familia',
+    '🎉 Nuevos productos cada semana',
+  ];
+
+  let current = 0;
+
+  function animateTo(idx, fromLeft) {
+    const next = (idx + phrases.length) % phrases.length;
+
+    slideEl.style.transition = 'none';
+    slideEl.style.transform = fromLeft ? 'translateX(-30px)' : 'translateX(30px)';
+    slideEl.textContent = phrases[next];
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        slideEl.style.transition = 'transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        slideEl.style.transform = 'translateX(0)';
+      });
+    });
+
+    current = next;
+  }
+
+  slideEl.textContent = phrases[0];
+
+  if (prevBtn) prevBtn.addEventListener('click', () => animateTo(current - 1, true));
+  if (nextBtn) nextBtn.addEventListener('click', () => animateTo(current + 1, false));
+}
+
 // ========== CART STATE ==========
 let cart = JSON.parse(localStorage.getItem('bloopiaCart')) || [];
 
@@ -711,6 +751,7 @@ function initCategoryDimming() {
 
 // ========== INIT ==========
 document.addEventListener('DOMContentLoaded', () => {
+  initTopBar();
   initSmoothScroll();
   initAnnouncementBar();
   initHeroSlider();

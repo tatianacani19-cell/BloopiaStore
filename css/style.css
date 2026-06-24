@@ -516,8 +516,8 @@ input {
   background: var(--cream);
 }
 
-/* ========== ANNOUNCEMENT BAR ========== */
-.announcement-bar {
+/* ========== TOP BAR ========== */
+.top-bar {
   position: fixed;
   top: 0;
   left: 0;
@@ -525,6 +525,59 @@ input {
   height: var(--announcement-height);
   background: var(--brand-purple);
   z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-bar-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.7rem;
+  cursor: pointer;
+  padding: 4px 6px;
+  transition: color 0.2s;
+}
+
+.top-bar-arrow-left {
+  left: calc(50% - 230px);
+}
+
+.top-bar-arrow-right {
+  right: calc(50% - 230px);
+}
+
+.top-bar-arrow:hover {
+  color: var(--white);
+}
+
+.top-bar-track {
+  overflow: hidden;
+  text-align: center;
+  line-height: var(--announcement-height);
+  max-width: 360px;
+}
+
+.top-bar-slide {
+  display: inline-block;
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ========== ANNOUNCEMENT BAR ========== */
+.announcement-bar {
+  position: relative;
+  width: 100%;
+  height: var(--announcement-height);
+  background: var(--brand-purple);
+  z-index: 1;
   overflow: hidden;
   display: flex;
   align-items: center;

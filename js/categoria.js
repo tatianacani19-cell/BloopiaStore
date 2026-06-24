@@ -335,6 +335,7 @@ function initPromoCarousel() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  initTopBar();
   initCategoryPage();
   initPromoCarousel();
 });
