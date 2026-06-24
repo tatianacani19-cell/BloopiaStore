@@ -478,7 +478,7 @@ function initHeroCursor() {
   const canvas = document.getElementById('heroCursorCanvas');
   if (!hero || !canvas) return;
 
-  const originalOverlay = 'linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.25) 100%)';
+  const originalOverlay = 'transparent';
   const ctx = canvas.getContext('2d');
   let mouseX = 0, mouseY = 0;
   let orbX = 0, orbY = 0;
@@ -559,7 +559,7 @@ function initHeroCursor() {
     const overlay = getActiveOverlay();
     if (overlay) {
       overlay.style.background = isInside
-        ? `radial-gradient(500px circle at ${spotX}px ${spotY}px, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.2) 25%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.6) 100%), ${originalOverlay}`
+        ? `radial-gradient(600px circle at ${spotX}px ${spotY}px, rgba(88,197,175,0.35) 0%, rgba(116,112,229,0.2) 30%, rgba(88,197,175,0.08) 55%, transparent 80%)`
         : originalOverlay;
     }
 
@@ -582,12 +582,13 @@ function initHeroCursor() {
     }
 
     if (isInside) {
-      const glow = ctx.createRadialGradient(orbX, orbY, 0, orbX, orbY, orbRadius * 5);
-      glow.addColorStop(0, 'rgba(116,112,229,0.12)');
-      glow.addColorStop(0.4, 'rgba(88,197,175,0.06)');
+      const glow = ctx.createRadialGradient(orbX, orbY, 0, orbX, orbY, orbRadius * 10);
+      glow.addColorStop(0, 'rgba(88,197,175,0.25)');
+      glow.addColorStop(0.3, 'rgba(116,112,229,0.15)');
+      glow.addColorStop(0.6, 'rgba(88,197,175,0.06)');
       glow.addColorStop(1, 'rgba(116,112,229,0)');
       ctx.beginPath();
-      ctx.arc(orbX, orbY, orbRadius * 5, 0, Math.PI * 2);
+      ctx.arc(orbX, orbY, orbRadius * 10, 0, Math.PI * 2);
       ctx.fillStyle = glow;
       ctx.fill();
 
@@ -595,9 +596,9 @@ function initHeroCursor() {
         orbX - orbRadius * 0.25, orbY - orbRadius * 0.25, 0,
         orbX, orbY, orbRadius
       );
-      orbGrad.addColorStop(0, 'rgba(88,197,175,0.85)');
-      orbGrad.addColorStop(0.5, 'rgba(116,112,229,0.6)');
-      orbGrad.addColorStop(1, 'rgba(116,112,229,0.05)');
+      orbGrad.addColorStop(0, 'rgba(88,197,175,0.9)');
+      orbGrad.addColorStop(0.4, 'rgba(116,112,229,0.7)');
+      orbGrad.addColorStop(1, 'rgba(88,197,175,0.05)');
       ctx.beginPath();
       ctx.arc(orbX, orbY, orbRadius, 0, Math.PI * 2);
       ctx.fillStyle = orbGrad;
