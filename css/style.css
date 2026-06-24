@@ -1685,6 +1685,23 @@ input { font-family: inherit; }
   color: var(--brand-purple);
 }
 
+.footer-col-contacto {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.footer-contact-info {
+  flex-shrink: 0;
+}
+
+.footer-col-contacto .btn-whatsapp {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  padding: 8px 14px;
+  white-space: nowrap;
+}
+
 .footer-contact li {
   display: flex;
   align-items: center;
