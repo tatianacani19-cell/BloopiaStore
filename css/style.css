@@ -121,6 +121,10 @@ input {
   background: var(--cream);
 }
 
+.section-white {
+  background: #fff;
+}
+
 .section-header {
   text-align: center;
   max-width: 600px;
