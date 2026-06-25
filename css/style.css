@@ -1678,7 +1678,7 @@ input {
   height: 60%;
   opacity: 1;
   pointer-events: none;
-  transform: translateY(260px);
+  transform: translateY(310px);
   z-index: 0;
 }
 
