@@ -1666,12 +1666,24 @@ input {
 
 /* ========== NEWSLETTER ========== */
 .newsletter {
+  position: relative;
   background: var(--text);
+}
+
+.newsletter-waves {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  opacity: 1;
+  pointer-events: none;
+  transform: translateY(160px);
 }
 
 .newsletter-inner {
   text-align: center;
-  padding: 40px 0;
+  padding: 40px 0 400px;
 }
 
 .newsletter-title {
@@ -1750,13 +1762,20 @@ input {
 .footer {
   background: var(--cream);
   border-top: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.footer-illustration {
+  width: 100%;
+  line-height: 0;
+  margin-bottom: -2px;
 }
 
 .footer-grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1fr 1.3fr;
   gap: 40px;
-  padding: 64px 24px;
+  padding: 100px 24px 240px;
 }
 
 .footer-brand .logo {
@@ -1874,7 +1893,7 @@ input {
 
 .footer-bottom {
   border-top: 1px solid var(--border);
-  padding: 20px 0;
+  padding: 40px 0;
   text-align: center;
 }
 
