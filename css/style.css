@@ -1833,7 +1833,7 @@ input {
 
 .footer-desc {
   font-size: 0.85rem;
-  color: var(--text-light);
+  color: #ccc;
   line-height: 1.7;
   margin-top: 16px;
   margin-bottom: 20px;
@@ -1846,13 +1846,13 @@ input {
 .footer-social-invite h4 {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--text);
+  color: #fff;
   margin-bottom: 4px;
 }
 
 .footer-social-invite p {
   font-size: 0.82rem;
-  color: var(--text-light);
+  color: #ccc;
   line-height: 1.5;
   margin: 0;
 }
@@ -1887,7 +1887,7 @@ input {
   text-transform: uppercase;
   letter-spacing: 1.5px;
   margin-bottom: 20px;
-  color: var(--text);
+  color: #fff;
 }
 
 .footer-col ul li {
@@ -1896,12 +1896,12 @@ input {
 
 .footer-col ul li a {
   font-size: 0.85rem;
-  color: var(--text-light);
+  color: #ccc;
   transition: var(--transition);
 }
 
 .footer-col ul li a:hover {
-  color: var(--brand-purple);
+  color: var(--brand-green-light);
 }
 
 .footer-col-contacto {
@@ -1926,21 +1926,21 @@ input {
   align-items: center;
   gap: 10px;
   font-size: 0.85rem;
-  color: var(--text-light);
+  color: #ccc;
 }
 
 .footer-contact li i {
   width: 16px;
-  color: var(--brand-purple);
+  color: var(--brand-green-light);
 }
 
 .footer-contact li a {
-  color: var(--text-light);
+  color: #ccc;
   transition: var(--transition);
 }
 
 .footer-contact li a:hover {
-  color: var(--brand-purple);
+  color: var(--brand-green-light);
 }
 
 .footer-bottom {
@@ -1955,7 +1955,7 @@ input {
 
 .footer-bottom p {
   font-size: 0.8rem;
-  color: #fff;
+  color: #ccc;
 }
 
 /* ========== CART SIDEBAR ========== */
