@@ -1965,10 +1965,6 @@ input {
 }
 
 /* ========== FOOTER MOBILE ========== */
-.desktop-only {
-  display: block;
-}
-
 .mobile-only {
   display: none;
 }
