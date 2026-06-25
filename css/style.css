@@ -61,6 +61,8 @@
 html {
   scroll-behavior: smooth;
   font-size: 120%;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -1962,6 +1964,166 @@ input {
   color: #ccc;
 }
 
+/* ========== FOOTER MOBILE ========== */
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+.footer-mobile {
+  background: linear-gradient(135deg, #7ed6c4 0%, #7868b0 100%);
+  padding: 32px 0 20px;
+  text-align: left;
+}
+
+.fm-header {
+  margin-bottom: 24px;
+}
+
+.fm-header .logo-img {
+  height: 44px;
+  width: auto;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.fm-slogan {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  margin-bottom: 14px;
+  max-width: 90%;
+}
+
+.fm-social {
+  display: flex;
+  gap: 12px;
+}
+
+.fm-social a {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.fm-social a:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.fm-accordion {
+  margin-bottom: 20px;
+}
+
+.fm-acc-item {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.fm-acc-item:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.fm-acc-header {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fm-acc-header::-webkit-details-marker {
+  display: none;
+}
+
+.fm-acc-header::after {
+  content: '\f078';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-size: 0.65rem;
+  transition: transform 0.25s ease;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.fm-acc-item[open] .fm-acc-header::after {
+  transform: rotate(180deg);
+}
+
+.fm-acc-body {
+  padding: 0 0 12px;
+}
+
+.fm-acc-body ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fm-acc-body ul li {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fm-acc-body ul li a {
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+  padding: 2px 0;
+}
+
+.fm-acc-body ul li a:hover {
+  color: #fff;
+}
+
+.fm-acc-body ul li i {
+  width: 16px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.fm-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  background: #25d366;
+  color: #fff;
+  border-radius: 50px;
+}
+
+.fm-whatsapp:hover {
+  background: #1da851;
+}
+
+.fm-bottom {
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.fm-bottom p {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
 /* ========== CART SIDEBAR ========== */
 .cart-overlay {
   position: fixed;
@@ -2826,9 +2988,48 @@ input {
     flex-direction: column;
   }
 
+  .newsletter-inner {
+    padding: 40px 0 200px;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr 1fr;
     gap: 28px;
+  }
+
+  .footer {
+    margin-top: -200px;
+  }
+
+  .footer-content {
+    padding-top: 0;
+    background: transparent;
+  }
+
+  .footer-col-contacto {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-waves {
+    display: none;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .footer-mobile {
+    position: relative;
+    z-index: 2;
+  }
+
+  .footer-bottom {
+    display: none;
   }
 
 }
@@ -2972,6 +3173,58 @@ input {
     gap: 24px;
     flex-direction: column;
     align-items: center;
+  }
+
+  .newsletter-inner {
+    padding: 30px 0 120px;
+  }
+
+  .footer {
+    margin-top: -120px;
+  }
+
+  .footer-content {
+    padding-top: 0;
+  }
+
+  .footer-waves {
+    display: none;
+  }
+
+  .footer-mobile {
+    padding: 24px 0 16px;
+  }
+
+  .fm-header {
+    margin-bottom: 20px;
+  }
+
+  .fm-header .logo-img {
+    height: 38px;
+  }
+
+  .fm-slogan {
+    font-size: 0.72rem;
+    max-width: 100%;
+  }
+
+  .fm-acc-header {
+    font-size: 0.75rem;
+    padding: 12px 0;
+  }
+
+  .fm-acc-body ul li {
+    font-size: 0.75rem;
+  }
+
+  .fm-whatsapp {
+    font-size: 0.72rem;
+    padding: 8px 16px;
+    margin-bottom: 16px;
+  }
+
+  .fm-bottom p {
+    font-size: 0.65rem;
   }
 }
 
