@@ -1970,7 +1970,7 @@ input {
 }
 
 .footer-mobile {
-  background: linear-gradient(135deg, #7ed6c4 0%, #7868b0 100%);
+  background: linear-gradient(135deg, #9bdccc 0%, #b8a8e0 100%);
   padding: 32px 0 20px;
   text-align: left;
 }
@@ -2101,13 +2101,13 @@ input {
   font-size: 0.78rem;
   padding: 10px 20px;
   margin-bottom: 20px;
-  background: #25d366;
+  background: #5fc1aa;
   color: #fff;
   border-radius: 50px;
 }
 
 .fm-whatsapp:hover {
-  background: #1da851;
+  background: #4daa94;
 }
 
 .fm-bottom {
