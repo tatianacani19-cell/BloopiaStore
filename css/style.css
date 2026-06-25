@@ -1697,7 +1697,7 @@ input {
     transform: translateX(0) translateY(0);
   }
   50% {
-    transform: translateX(30px) translateY(-5px);
+    transform: translateX(30px) translateY(-12px);
   }
 }
 
@@ -1706,7 +1706,7 @@ input {
     transform: translateX(0) translateY(0);
   }
   50% {
-    transform: translateX(-30px) translateY(-5px);
+    transform: translateX(-30px) translateY(-12px);
   }
 }
 
