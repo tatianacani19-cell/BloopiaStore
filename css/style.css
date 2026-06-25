@@ -1105,7 +1105,7 @@ input {
   min-height: 400px;
   display: flex;
   align-items: center;
-  background-image: url('https://images.unsplash.com/photo-1618220179428-22790b461013?w=1600&q=80');
+  background-image: url('../assets/fondobanner.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
