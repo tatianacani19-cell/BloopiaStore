@@ -2975,6 +2975,10 @@ input {
 }
 
 @media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
   .container {
     padding: 0 16px;
   }
