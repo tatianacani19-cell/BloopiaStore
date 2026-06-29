@@ -1257,7 +1257,7 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 60px 52px 60px 248px;
+  padding: 60px 52px 60px 120px;
   background: var(--brand-purple-light);
   position: relative;
   z-index: 2;
@@ -1280,7 +1280,7 @@ input {
 }
 
 .promo-slide-title {
-  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-size: clamp(1.6rem, 3vw, 2.8rem);
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: -1px;
@@ -2452,15 +2452,15 @@ input {
   }
 
   .promo-slide-content {
-    padding: 48px 52px 48px 208px;
+    padding: 48px 52px 48px 80px;
   }
 
   .promo-slide-title {
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-size: clamp(1.4rem, 2.8vw, 2rem);
   }
 
   .promo-slide-desc {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     margin-bottom: 24px;
   }
 
