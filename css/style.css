@@ -3114,9 +3114,43 @@ input {
   }
 
   .promo-stats {
-    gap: 24px;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 16px;
+    align-items: start;
+  }
+
+  .promo-stat-item {
+    min-width: 0;
+  }
+
+  .promo-stat-item:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .promo-stat-item:nth-child(2) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: center;
+  }
+
+  .promo-stat-item:nth-child(3) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .promo-stat-icon {
+    font-size: 1.8rem;
+    margin-bottom: 6px;
+  }
+
+  .promo-stat-number {
+    font-size: clamp(1.6rem, 5vw, 2rem);
+  }
+
+  .promo-stat-label {
+    font-size: 0.75rem;
   }
 
   .newsletter-inner {
