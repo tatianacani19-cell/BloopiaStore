@@ -2,13 +2,13 @@ const categoryConfig = {
   babies: {
     displayName: 'Bebés',
     description: 'Todo para el cuidado, comodidad y desarrollo de tu bebé, con la mejor calidad y diseño.',
-    heroImage: 'https://images.unsplash.com/photo-1519689680058-324335c77eba?w=1600&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1519689680058-324335c77eba?w=1200&q=80&fm=webp',
     subcategories: [
       { key: 'todos', label: 'Todos' },
       {
         key: 'coches', label: 'Coches',
         banner: {
-          image: 'https://images.unsplash.com/photo-1593359677879-a4ca92ba5acb?w=1200&q=80',
+          image: 'https://images.unsplash.com/photo-1593359677879-a4ca92ba5acb?w=800&q=80&fm=webp',
           title: 'Coches para Bebés',
           desc: 'Movilidad con estilo y seguridad para tu pequeño. Encuentra coches paseo, travel systems y más.',
           features: ['Diseño ergonómico', 'Sistema de seguridad', 'Plegable y compacto']
@@ -17,7 +17,7 @@ const categoryConfig = {
       {
         key: 'montables', label: 'Montables',
         banner: {
-          image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=1200&q=80',
+          image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&q=80&fm=webp',
           title: 'Juguetes Montables',
           desc: 'Diversión y desarrollo motor con nuestros caballos balancín, triciclos y coches eléctricos.',
           features: ['Estimula el equilibrio', 'Materiales seguros', 'Diseños coloridos']
@@ -26,7 +26,7 @@ const categoryConfig = {
       {
         key: 'andaderas', label: 'Andaderas y Caminadores',
         banner: {
-          image: 'https://images.unsplash.com/photo-1593359677879-a4ca92ba5acb?w=1200&q=80',
+          image: 'https://images.unsplash.com/photo-1593359677879-a4ca92ba5acb?w=800&q=80&fm=webp',
           title: 'Andaderas y Caminadores',
           desc: 'Apoya sus primeros pasos con nuestras andaderas musicales y caminadores plegables.',
           features: ['Estimula el gateo', 'Música y luces', 'Plegable']
@@ -35,7 +35,7 @@ const categoryConfig = {
       {
         key: 'descanso', label: 'Descanso',
         banner: {
-          image: 'https://images.unsplash.com/photo-1593359677879-a4ca92ba5acb?w=1200&q=80',
+          image: 'https://images.unsplash.com/photo-1593359677879-a4ca92ba5acb?w=800&q=80&fm=webp',
           title: 'Descanso para Bebés',
           desc: 'Cunas colecho, colchones viscoelásticos y sábanas de algodón para el descanso perfecto.',
           features: ['Materiales hipoalergénicos', 'Transpirable', 'Máxima comodidad']
@@ -44,7 +44,7 @@ const categoryConfig = {
       {
         key: 'maternidad', label: 'Maternidad',
         banner: {
-          image: 'https://images.unsplash.com/photo-1593359677879-a4ca92ba5acb?w=1200&q=80',
+          image: 'https://images.unsplash.com/photo-1593359677879-a4ca92ba5acb?w=800&q=80&fm=webp',
           title: 'Maternidad',
           desc: 'Cojines de lactancia, sillitas para coche y mochilas portabebés para mayor comodidad.',
           features: ['Ergonómico', 'Fácil de usar', 'Seguridad certificada']
@@ -53,7 +53,7 @@ const categoryConfig = {
       {
         key: 'seguridad', label: 'Seguridad',
         banner: {
-          image: 'https://images.unsplash.com/photo-1593359677879-a4ca92ba5acb?w=1200&q=80',
+          image: 'https://images.unsplash.com/photo-1593359677879-a4ca92ba5acb?w=800&q=80&fm=webp',
           title: 'Seguridad Infantil',
           desc: 'Protege a tu bebé con nuestras barras de cuna, protectores de enchufes y seguros para puertas.',
           features: ['Fácil instalación', 'Materiales resistentes', 'Diseño discreto']
@@ -62,7 +62,7 @@ const categoryConfig = {
       {
         key: 'higiene', label: 'Higiene',
         banner: {
-          image: 'https://images.unsplash.com/photo-1593359677879-a4ca92ba5acb?w=1200&q=80',
+          image: 'https://images.unsplash.com/photo-1593359677879-a4ca92ba5acb?w=800&q=80&fm=webp',
           title: 'Higiene para Bebés',
           desc: 'Kits de higiene, toallitas húmedas y sets de baño completos para el cuidado diario.',
           features: ['Libre de químicos', 'Hipoalergénico', 'Dermatológicamente probado']
@@ -71,7 +71,7 @@ const categoryConfig = {
       {
         key: 'juguetes', label: 'Juguetes',
         banner: {
-          image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=1200&q=80',
+          image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&q=80&fm=webp',
           title: 'Juguetes para Bebés',
           desc: 'Juguetes sensoriales, mordederos y bloques apilables para estimular su desarrollo.',
           features: ['Estimulación temprana', 'Materiales seguros', 'Colores vibrantes']
@@ -80,7 +80,7 @@ const categoryConfig = {
       {
         key: 'construccion', label: 'Construcción',
         banner: {
-          image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=1200&q=80',
+          image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&q=80&fm=webp',
           title: 'Construcción',
           desc: 'Bloques de construcción y pistas de tren de madera para horas de diversión creativa.',
           features: ['Desarrolla la creatividad', 'Madera sostenible', 'Piezas seguras']
@@ -89,7 +89,7 @@ const categoryConfig = {
       {
         key: 'muebles', label: 'Muebles',
         banner: {
-          image: 'https://images.unsplash.com/photo-1593359677879-a4ca92ba5acb?w=1200&q=80',
+          image: 'https://images.unsplash.com/photo-1593359677879-a4ca92ba5acb?w=800&q=80&fm=webp',
           title: 'Muebles Infantiles',
           desc: 'Cunas cama, cambiadores plegables y estantes para juguetes. Muebles diseñados para crecer con ellos.',
           features: ['Diseño funcional', 'Materiales resistentes', 'Fácil montaje']
@@ -98,7 +98,7 @@ const categoryConfig = {
       {
         key: 'comederos', label: 'Comederos',
         banner: {
-          image: 'https://images.unsplash.com/photo-1593359677879-a4ca92ba5acb?w=1200&q=80',
+          image: 'https://images.unsplash.com/photo-1593359677879-a4ca92ba5acb?w=800&q=80&fm=webp',
           title: 'Comederos',
           desc: 'Sets de comedor infantil y platos de silicona para la hora de comer.',
           features: ['Silicona de grado alimenticio', 'Antideslizante', 'Fácil de limpiar']
@@ -253,8 +253,8 @@ function renderProducts() {
   grid.innerHTML = filtered.map((p, i) => `
     <div class="product-card" style="transition-delay:${i * 80}ms" data-category="${p.category}">
       <div class="product-image-wrap">
-        <img src="${p.image}" alt="${p.name}" loading="lazy" class="product-img-default" />
-        ${p.hoverImage ? `<img src="${p.hoverImage}" alt="${p.name}" loading="lazy" class="product-img-hover" />` : ''}
+        <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async"${i < 4 ? ' fetchpriority="high"' : ''} class="product-img-default" />
+        ${p.hoverImage ? `<img src="${p.hoverImage}" alt="${p.name}" loading="lazy" decoding="async" class="product-img-hover" />` : ''}
         ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
       </div>
       <div class="product-body">

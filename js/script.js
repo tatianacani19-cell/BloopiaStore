@@ -66,8 +66,8 @@ function renderProducts(gridId, items) {
   grid.innerHTML = items.map((p, i) => `
     <div class="product-card reveal-stagger reveal-up" data-category="${p.category}" style="transition-delay:${i * 80}ms">
       <div class="product-image-wrap">
-        <img src="${p.image}" alt="${p.name}" loading="lazy" class="product-img-default" />
-        ${p.hoverImage ? `<img src="${p.hoverImage}" alt="${p.name}" loading="lazy" class="product-img-hover" />` : ''}
+        <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async"${i < 4 ? ' fetchpriority="high"' : ''} class="product-img-default" />
+        ${p.hoverImage ? `<img src="${p.hoverImage}" alt="${p.name}" loading="lazy" decoding="async" class="product-img-hover" />` : ''}
         ${p.badge ? `<span class="product-badge ${p.badge.toLowerCase()}">${p.badge}</span>` : ''}
       </div>
       <div class="product-body">
@@ -202,7 +202,7 @@ function updateCartUI() {
     itemsEl.innerHTML = cart.map(item => `
       <div class="cart-item">
         <div class="cart-item-image">
-          <img src="${item.image}" alt="${item.name}" />
+          <img src="${item.image}" alt="${item.name}" decoding="async" />
         </div>
         <div class="cart-item-info">
           <h4 class="cart-item-name">${item.name}</h4>
