@@ -12,9 +12,14 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="preload" href="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=80" as="image" />
-  <link rel="preload" href="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=900&q=80" as="image" />
-  <link rel="preload" href="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=900&q=80" as="image" />
+  <link rel="preload" href="assets/banner1.png" as="image" />
+  <link rel="preload" href="assets/banner2.png" as="image" />
+  <link rel="preload" href="assets/banner3.png" as="image" />
+  <link rel="preload" href="assets/banner4.png" as="image" />
+  <link rel="preload" href="assets/bannermovil/banner1cel.png" as="image" media="(max-width: 768px)" />
+  <link rel="preload" href="assets/bannermovil/banner2cel.png" as="image" media="(max-width: 768px)" />
+  <link rel="preload" href="assets/bannermovil/banner3cel.png" as="image" media="(max-width: 768px)" />
+  <link rel="preload" href="assets/bannermovil/banner4cel.png" as="image" media="(max-width: 768px)" />
 </head>
 
 <body>
@@ -40,7 +45,7 @@
       </button>
 
       <a href="#" class="logo">
-        <img src="assets/LOGOBLOOPIA.png" alt="BLOOPIA" class="logo-img" />
+        <img src="assets/LOGOBLOOPIA.png" alt="BLOOPIA" class="logo-img" fetchpriority="high" />
       </a>
 
       <nav class="nav-menu" id="navMenu">
@@ -378,27 +383,27 @@
             <div class="payment-methods">
               <div class="payment-row">
                 <div class="payment-item">
-                  <img src="assets/contra.png" alt="Pago Contraentrega" class="payment-img-no-filter" />
+                  <img src="assets/contra.png" alt="Pago Contraentrega" class="payment-img-no-filter" loading="lazy" loading="lazy" />
                 </div>
                 <div class="payment-item">
-                  <img src="assets/bancol.png" alt="Bancolombia" class="payment-img-no-filter" />
+                  <img src="assets/bancol.png" alt="Bancolombia" class="payment-img-no-filter" loading="lazy" />
                 </div>
                 <div class="payment-item">
-                  <img src="assets/bogota.png" alt="Banco de Bogotá" class="payment-img-no-filter" />
+                  <img src="assets/bogota.png" alt="Banco de Bogotá" class="payment-img-no-filter" loading="lazy" />
                 </div>
                 <div class="payment-item">
-                  <img src="assets/nequi.png" alt="Nequi" class="payment-img-no-filter" />
+                  <img src="assets/nequi.png" alt="Nequi" class="payment-img-no-filter" loading="lazy" />
                 </div>
               </div>
               <div class="payment-row">
                 <div class="payment-item">
-                  <img src="assets/breb.png" alt="Bre-B" class="payment-img-no-filter" />
+                  <img src="assets/breb.png" alt="Bre-B" class="payment-img-no-filter" loading="lazy" />
                 </div>
                 <div class="payment-item">
-                  <img src="assets/addi.png" alt="Addi" class="payment-img-no-filter" />
+                  <img src="assets/addi.png" alt="Addi" class="payment-img-no-filter" loading="lazy" />
                 </div>
                 <div class="payment-item">
-                  <img src="assets/siscre.png" alt="Sistecrédito" class="payment-img-no-filter" />
+                  <img src="assets/siscre.png" alt="Sistecrédito" class="payment-img-no-filter" loading="lazy" />
                 </div>
               </div>
             </div>
@@ -414,16 +419,16 @@
             <div class="payment-methods">
               <div class="payment-row">
                 <div class="payment-item">
-                  <img src="assets/envios/cordin.png" alt="Cordin" class="payment-img-no-filter" />
+                  <img src="assets/envios/cordin.png" alt="Cordin" class="payment-img-no-filter" loading="lazy" />
                 </div>
                 <div class="payment-item">
-                  <img src="assets/envios/envia.png" alt="Envia" class="payment-img-no-filter" />
+                  <img src="assets/envios/envia.png" alt="Envia" class="payment-img-no-filter" loading="lazy" />
                 </div>
                 <div class="payment-item">
-                  <img src="assets/envios/inter.png" alt="Inter" class="payment-img-no-filter" />
+                  <img src="assets/envios/inter.png" alt="Inter" class="payment-img-no-filter" loading="lazy" />
                 </div>
                 <div class="payment-item">
-                  <img src="assets/envios/servi.png" alt="Servi" class="payment-img-no-filter" />
+                  <img src="assets/envios/servi.png" alt="Servi" class="payment-img-no-filter" loading="lazy" />
                 </div>
               </div>
             </div>
@@ -494,7 +499,7 @@
   <div class="mob-menu-overlay" id="mobMenuOverlay"></div>
   <div class="mob-menu" id="mobMenu">
     <div class="mob-menu-header">
-      <img src="assets/LOGOBLOOPIA.png" alt="BLOOPIA" class="mob-menu-logo" />
+      <img src="assets/LOGOBLOOPIA.png" alt="BLOOPIA" class="mob-menu-logo" loading="lazy" />
       <button class="mob-menu-close" id="mobMenuClose"><i class="fas fa-times"></i></button>
     </div>
     <div class="mob-menu-body">
@@ -525,9 +530,9 @@
     </div>
   </div>
 
-  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
-  <script src="js/products.js"></script>
-  <script src="js/script.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
+  <script src="js/products.js" defer></script>
+  <script src="js/script.js" defer></script>
 </body>
 
 </html>
