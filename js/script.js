@@ -458,6 +458,7 @@ function initPromoSlider() {
   let current = 0;
   let interval = null;
   const DELAY = 6000;
+  const swipeHint = document.querySelector('.promo-swipe-hint');
 
   function goTo(index) {
     slides.forEach((s, i) => {
@@ -467,6 +468,9 @@ function initPromoSlider() {
       d.classList.toggle('active', i === index);
     });
     current = index;
+    if (swipeHint) {
+      swipeHint.style.display = index === 0 ? 'flex' : 'none';
+    }
   }
 
   function next() {
@@ -503,9 +507,48 @@ function initPromoSlider() {
       if (idx !== current) {
         goTo(idx);
         restartAuto();
+        const slider = document.getElementById('promoSlides');
+        if (slider && window.innerWidth <= 768) {
+          slider.scrollTo({ left: slider.children[idx].offsetLeft, behavior: 'smooth' });
+        }
       }
     });
   });
+
+  const promoSlider = document.getElementById('promoSlides');
+  if (promoSlider) {
+    promoSlider.addEventListener('scroll', () => {
+      if (window.innerWidth > 768) return;
+      const slideWidth = promoSlider.children[0]?.offsetWidth || 1;
+      const idx = Math.round(promoSlider.scrollLeft / slideWidth);
+      if (idx !== current && slides[idx]) {
+        slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        current = idx;
+        if (swipeHint) {
+          swipeHint.style.display = idx === 0 ? 'flex' : 'none';
+        }
+      }
+    });
+  }
+
+  function scrollToSlide(index) {
+    if (promoSlider && window.innerWidth <= 768) {
+      promoSlider.scrollTo({ left: promoSlider.children[index].offsetLeft, behavior: 'smooth' });
+    }
+  }
+
+  const origNext = next;
+  next = function() {
+    origNext();
+    scrollToSlide(current);
+  };
+
+  const origPrev = prev;
+  prev = function() {
+    origPrev();
+    scrollToSlide(current);
+  };
 
   startAuto();
 }

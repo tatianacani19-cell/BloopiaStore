@@ -1,4 +1,4 @@
-/* ========== RESET & BASE ========== */
+﻿/* ========== RESET & BASE ========== */
 *,
 *::before,
 *::after {
@@ -2869,19 +2869,29 @@ input {
 
   .promo-slider {
     height: auto;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    gap: 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .promo-slider::-webkit-scrollbar {
+    display: none;
   }
 
   .promo-slide {
     position: relative;
     inset: auto;
+    flex: 0 0 100%;
+    scroll-snap-align: start;
     flex-direction: column-reverse;
     opacity: 1;
-    display: none;
-    transition: none;
-  }
-
-  .promo-slide.active {
     display: flex;
+    transition: none;
   }
 
   .promo-slide.active .promo-slide-image img {
@@ -2917,6 +2927,11 @@ input {
 
   .promo-dots {
     bottom: 10px;
+  }
+
+  .promo-swipe-hint {
+    display: flex;
+    margin-top: 20px;
   }
 
   .promo-dot {
