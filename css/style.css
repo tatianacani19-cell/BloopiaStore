@@ -2736,6 +2736,11 @@ input {
     background-position: center center;
   }
 
+  .hero-slide:nth-child(4) {
+    background-image: url('../assets/bannermovil/banner4cel.png') !important;
+    background-position: center center;
+  }
+
   .hero-content {
     max-width: 100%;
     padding: 60px 40px 80px;
