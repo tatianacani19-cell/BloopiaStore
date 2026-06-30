@@ -1128,7 +1128,7 @@ input {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 100px 0 80px;
+  padding: 30px 0 30px;
 }
 
 .promo-badge {
@@ -1178,7 +1178,7 @@ input {
 }
 
 .promo-stat-icon {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: var(--brand-green-light);
   margin-bottom: 12px;
   animation: promoStatFloat 3s ease-in-out infinite;
@@ -2856,7 +2856,7 @@ input {
   }
 
   .promo-content {
-    padding: 120px 0 60px;
+    padding: 30px 0 30px;
   }
 
   .promo-stats {
@@ -3133,6 +3133,7 @@ input {
     grid-column: 1 / -1;
     grid-row: 2;
     justify-self: center;
+    margin-top: 24px;
   }
 
   .promo-stat-item:nth-child(3) {
@@ -3141,7 +3142,7 @@ input {
   }
 
   .promo-stat-icon {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     margin-bottom: 6px;
   }
 
