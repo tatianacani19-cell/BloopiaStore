@@ -2703,6 +2703,11 @@ input {
     background-position: 60% center;
   }
 
+  .hero-slide:first-child {
+    background-image: url('../assets/bannermovil/banner1cel.png') !important;
+    background-position: center center;
+  }
+
   .hero-content {
     max-width: 100%;
     padding: 60px 40px 80px;
@@ -3096,11 +3101,6 @@ input {
 
   .hero-dot.active {
     width: 18px;
-  }
-
-  .hero-slide:first-child {
-    background-image: url('../assets/bannermovil/banner1cel.png') !important;
-    background-position: center center;
   }
 
   .promo-slide-image {
