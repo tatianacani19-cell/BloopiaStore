@@ -3098,6 +3098,11 @@ input {
     width: 18px;
   }
 
+  .hero-slide:first-child {
+    background-image: url('../assets/bannermovil/banner1cel.png') !important;
+    background-position: center center;
+  }
+
   .promo-slide-image {
     height: 240px;
   }
