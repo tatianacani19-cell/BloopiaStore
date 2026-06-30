@@ -1470,13 +1470,13 @@ input {
 
 .trust-card:nth-child(1) .trust-icon,
 .trust-card:nth-child(3) .trust-icon {
-  background: rgba(88, 197, 175, 0.12);
-  color: var(--brand-green);
+  background: rgba(116, 112, 229, 0.12);
+  color: var(--brand-purple-light);
 }
 
 .trust-card:nth-child(2) .trust-icon {
-  background: rgba(116, 112, 229, 0.12);
-  color: var(--brand-purple-light);
+  background: rgba(88, 197, 175, 0.12);
+  color: var(--brand-green);
 }
 
 .trust-card:hover .trust-icon {
@@ -1586,24 +1586,24 @@ input {
 
 .trust-card:nth-child(1) .trust-highlight,
 .trust-card:nth-child(3) .trust-highlight {
+  background: rgba(116, 112, 229, 0.1);
+  color: var(--brand-purple-light);
+  border: 1px solid rgba(116, 112, 229, 0.2);
+}
+
+.trust-card:nth-child(2) .trust-highlight {
   background: rgba(88, 197, 175, 0.1);
   color: var(--brand-green-light);
   border: 1px solid rgba(88, 197, 175, 0.2);
 }
 
 .trust-card:nth-child(1) .payment-methods {
-  margin-bottom: 40px;
+  margin-bottom: 24px;
   margin-top: 20px;
 }
 
 .trust-card:nth-child(1) .trust-highlight {
   margin-top: 16px;
-}
-
-.trust-card:nth-child(2) .trust-highlight {
-  background: rgba(116, 112, 229, 0.1);
-  color: var(--brand-purple-light);
-  border: 1px solid rgba(116, 112, 229, 0.2);
 }
 
 /* ========== TRUST CAROUSEL ========== */
@@ -3199,12 +3199,12 @@ input {
     margin-bottom: 10px;
   }
 
-  .trust-card:nth-child(1) .payment-methods {
+  .trust-card:nth-child(2) .payment-methods {
     margin-top: 12px;
     margin-bottom: 28px;
   }
 
-  .trust-card:nth-child(1) .trust-highlight {
+  .trust-card:nth-child(2) .trust-highlight {
     margin-top: 10px;
   }
 
