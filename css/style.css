@@ -1592,7 +1592,7 @@ input {
 }
 
 .trust-card:nth-child(1) .payment-methods {
-  margin-bottom: 4px;
+  margin-bottom: 40px;
   margin-top: 20px;
 }
 
@@ -3201,6 +3201,7 @@ input {
 
   .trust-card:nth-child(1) .payment-methods {
     margin-top: 12px;
+    margin-bottom: 28px;
   }
 
   .trust-card:nth-child(1) .trust-highlight {
