@@ -1606,6 +1606,10 @@ input {
   margin-top: 16px;
 }
 
+.trust-card:nth-child(2) .payment-methods {
+  margin-bottom: 120px;
+}
+
 /* ========== TRUST CAROUSEL ========== */
 .trust-carousel {
   position: relative;
