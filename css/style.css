@@ -2696,15 +2696,38 @@ input {
   .hero-slides {
     height: 70vh;
     min-height: 450px;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    gap: 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hero-slides::-webkit-scrollbar {
+    display: none;
   }
 
   .hero-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    position: relative;
+    inset: auto;
     align-items: flex-end;
     background-position: 60% center;
+    opacity: 1;
+    transition: none;
   }
 
   .hero-slide:first-child {
     background-image: url('../assets/bannermovil/banner1cel.png') !important;
+    background-position: center center;
+  }
+
+  .hero-slide:nth-child(2) {
+    background-image: url('../assets/bannermovil/banner2cel.png') !important;
     background-position: center center;
   }
 
@@ -2731,11 +2754,7 @@ input {
   }
 
   .hero-arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 0.85rem;
-    opacity: 1;
-    visibility: visible;
+    display: none;
   }
 
   .hero-arrow-left {

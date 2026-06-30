@@ -431,8 +431,15 @@ function initHeroSlider() {
     startAuto();
   }
 
-  if (prevBtn) prevBtn.addEventListener('click', () => { prev(); restartAuto(); });
-  if (nextBtn) nextBtn.addEventListener('click', () => { next(); restartAuto(); });
+  function scrollToHero(index) {
+    const hs = document.getElementById('heroSlides');
+    if (hs && window.innerWidth <= 768) {
+      hs.scrollTo({ left: hs.children[index]?.offsetLeft || 0, behavior: 'smooth' });
+    }
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => { prev(); restartAuto(); scrollToHero(current); });
+  if (nextBtn) nextBtn.addEventListener('click', () => { next(); restartAuto(); scrollToHero(current); });
 
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
@@ -440,9 +447,24 @@ function initHeroSlider() {
       if (idx !== current) {
         goTo(idx);
         restartAuto();
+        scrollToHero(idx);
       }
     });
   });
+
+  const heroSlides = document.getElementById('heroSlides');
+  if (heroSlides) {
+    heroSlides.addEventListener('scroll', () => {
+      if (window.innerWidth > 768) return;
+      const slideWidth = heroSlides.children[0]?.offsetWidth || 1;
+      const idx = Math.round(heroSlides.scrollLeft / slideWidth);
+      if (idx !== current && slides[idx]) {
+        slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        current = idx;
+      }
+    });
+  }
 
   startAuto();
 }
