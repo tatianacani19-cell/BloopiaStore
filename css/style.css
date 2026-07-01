@@ -4380,6 +4380,38 @@ input {
   transform: scale(1.08);
 }
 
+.det-modal-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  z-index: 10;
+}
+
+.det-modal-arrow:hover {
+  background: rgba(255,255,255,0.25);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.det-modal-arrow-left {
+  left: 24px;
+}
+
+.det-modal-arrow-right {
+  right: 24px;
+}
+
 /* Footer spacer for pages without newsletter */
 .det-footer-spacer {
   height: 350px;
@@ -4473,6 +4505,20 @@ input {
     width: 40px;
     height: 40px;
     font-size: 1.4rem;
+  }
+
+  .det-modal-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+
+  .det-modal-arrow-left {
+    left: 12px;
+  }
+
+  .det-modal-arrow-right {
+    right: 12px;
   }
 
   .det-footer-spacer {

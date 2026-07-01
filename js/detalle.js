@@ -64,6 +64,33 @@ function renderGallery() {
     </div>
   `).join('');
 
+  // Touch swipe on main image
+  const mainImageWrap = document.getElementById('detMainImage');
+  if (mainImageWrap) {
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    mainImageWrap.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    mainImageWrap.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        const activeThumb = thumbs.querySelector('.det-thumb.active');
+        const idx = activeThumb ? parseInt(activeThumb.dataset.index) : 0;
+        if (diff > 0 && idx < images.length - 1) {
+          const nextThumb = thumbs.querySelector(`.det-thumb[data-index="${idx + 1}"]`);
+          if (nextThumb) nextThumb.click();
+        } else if (diff < 0 && idx > 0) {
+          const prevThumb = thumbs.querySelector(`.det-thumb[data-index="${idx - 1}"]`);
+          if (prevThumb) prevThumb.click();
+        }
+      }
+    }, { passive: true });
+  }
+
   thumbs.querySelectorAll('.det-thumb').forEach(thumb => {
     thumb.addEventListener('click', () => {
       const idx = parseInt(thumb.dataset.index);
@@ -71,6 +98,21 @@ function renderGallery() {
       thumb.classList.add('active');
       const newSrc = images[idx].includes('w=') ? images[idx].replace(/w=\d+/, 'w=800') : images[idx];
       mainImg.src = newSrc;
+
+      // Select corresponding color
+      const colors = currentProduct.colors || [];
+      const matchedColor = colors.find(c => c.image === images[idx]);
+      if (matchedColor) {
+        const colorIdx = colors.indexOf(matchedColor);
+        const colorBtns = document.querySelectorAll('.det-color-btn');
+        colorBtns.forEach(b => b.classList.remove('active'));
+        if (colorBtns[colorIdx]) {
+          colorBtns[colorIdx].classList.add('active');
+        }
+        const colorName = document.getElementById('detColorName');
+        if (colorName) colorName.textContent = matchedColor.name;
+        currentColor = matchedColor;
+      }
     });
   });
 }
@@ -266,13 +308,53 @@ function renderRelated() {
 }
 
 // ========== IMAGE ZOOM MODAL ==========
+let modalCurrentIdx = 0;
+
+function getModalImages() {
+  return currentProduct && currentProduct.images && currentProduct.images.length > 0
+    ? currentProduct.images
+    : (currentProduct ? [currentProduct.image] : []);
+}
+
 function openModal(src) {
   const modal = document.getElementById('detModal');
   const modalImg = document.getElementById('detModalImg');
   if (!modal || !modalImg) return;
-  modalImg.src = src;
+  const images = getModalImages();
+  modalCurrentIdx = images.findIndex(img => img === src);
+  if (modalCurrentIdx === -1) modalCurrentIdx = 0;
+  modalImg.src = images[modalCurrentIdx];
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
+  updateModalArrows();
+}
+
+function updateModalArrows() {
+  const images = getModalImages();
+  const prevBtn = document.getElementById('detModalPrev');
+  const nextBtn = document.getElementById('detModalNext');
+  if (prevBtn) prevBtn.style.display = modalCurrentIdx > 0 ? 'flex' : 'none';
+  if (nextBtn) nextBtn.style.display = modalCurrentIdx < images.length - 1 ? 'flex' : 'none';
+}
+
+function modalPrev() {
+  const images = getModalImages();
+  if (modalCurrentIdx > 0) {
+    modalCurrentIdx--;
+    const modalImg = document.getElementById('detModalImg');
+    if (modalImg) modalImg.src = images[modalCurrentIdx];
+    updateModalArrows();
+  }
+}
+
+function modalNext() {
+  const images = getModalImages();
+  if (modalCurrentIdx < images.length - 1) {
+    modalCurrentIdx++;
+    const modalImg = document.getElementById('detModalImg');
+    if (modalImg) modalImg.src = images[modalCurrentIdx];
+    updateModalArrows();
+  }
 }
 
 function closeModal() {
@@ -295,7 +377,27 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.target === modal) closeModal();
     });
   }
+  document.getElementById('detModalPrev')?.addEventListener('click', (e) => { e.stopPropagation(); modalPrev(); });
+  document.getElementById('detModalNext')?.addEventListener('click', (e) => { e.stopPropagation(); modalNext(); });
+
+  // Touch swipe in modal
+  const modalImg = document.getElementById('detModalImg');
+  if (modalImg) {
+    let modalTouchX = 0;
+    modalImg.addEventListener('touchstart', (e) => {
+      modalTouchX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    modalImg.addEventListener('touchend', (e) => {
+      const diff = modalTouchX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) modalNext();
+        else modalPrev();
+      }
+    }, { passive: true });
+  }
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft') modalPrev();
+    if (e.key === 'ArrowRight') modalNext();
   });
 });
