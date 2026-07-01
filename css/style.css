@@ -4303,8 +4303,8 @@ input {
 
 /* Accordion */
 .det-accordion-section {
-  background: var(--cream);
-  padding: 70px 0 60px;
+  background: #fff;
+  padding: 80px 0 60px;
 }
 
 .det-accordion {
