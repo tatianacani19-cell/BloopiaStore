@@ -1112,7 +1112,7 @@ input {
   min-height: 400px;
   display: flex;
   align-items: center;
-  background-image: url('../assets/fondobanner.png');
+  background-image: url('../assets/fondobanner.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -2722,22 +2722,22 @@ input {
   }
 
   .hero-slide:first-child {
-    background-image: url('../assets/bannermovil/banner1cel.png') !important;
+    background-image: url('../assets/bannermovil/banner1cel.webp') !important;
     background-position: center center;
   }
 
   .hero-slide:nth-child(2) {
-    background-image: url('../assets/bannermovil/banner2cel.png') !important;
+    background-image: url('../assets/bannermovil/banner2cel.webp') !important;
     background-position: center center;
   }
 
   .hero-slide:nth-child(3) {
-    background-image: url('../assets/bannermovil/banner3cel.png') !important;
+    background-image: url('../assets/bannermovil/banner3cel.webp') !important;
     background-position: center center;
   }
 
   .hero-slide:nth-child(4) {
-    background-image: url('../assets/bannermovil/banner4cel.png') !important;
+    background-image: url('../assets/bannermovil/banner4cel.webp') !important;
     background-position: center center;
   }
 
