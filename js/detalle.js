@@ -224,11 +224,16 @@ function renderAccordion() {
   const p = currentProduct;
 
   const descEl = document.getElementById('detDescription');
-  if (descEl) descEl.textContent = p.description || '';
+  if (descEl) descEl.innerHTML = (p.description || '').replace(/\n/g, '<br>');
 
   const specsEl = document.getElementById('detSpecifications');
   if (specsEl && p.specifications) {
-    specsEl.innerHTML = p.specifications.map(s => `<li>${s}</li>`).join('');
+    specsEl.innerHTML = p.specifications
+      .filter(s => s.trim())
+      .map(s => s.startsWith('Beneficios') || s.startsWith('Cuidados')
+        ? `<li style="list-style:none;font-weight:600;margin-top:10px;padding:0;color:var(--text)">${s}</li>`
+        : `<li>${s}</li>`)
+      .join('');
   }
 
   const shipEl = document.getElementById('detShipping');
