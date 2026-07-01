@@ -251,7 +251,7 @@ function renderProducts() {
   }
 
   grid.innerHTML = filtered.map((p, i) => `
-    <div class="product-card" style="transition-delay:${i * 80}ms" data-category="${p.category}">
+    <div class="product-card" style="transition-delay:${i * 80}ms" data-category="${p.category}" data-id="${p.id}">
       <div class="product-image-wrap">
         <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async"${i < 4 ? ' fetchpriority="high"' : ''} class="product-img-default" />
         ${p.hoverImage ? `<img src="${p.hoverImage}" alt="${p.name}" loading="lazy" decoding="async" class="product-img-hover" />` : ''}
@@ -260,13 +260,20 @@ function renderProducts() {
       <div class="product-body">
         <h3 class="product-name">${p.name}</h3>
         <span class="product-category-tag">${categoryNames[p.category] || p.category}</span>
-        <span class="product-price">$${p.price.toFixed(2)}</span>
+        <span class="product-price">${formatPrice(p.price)}</span>
         <button class="add-to-cart" data-id="${p.id}">
           <i class="fas fa-plus"></i> Agregar al Carrito
         </button>
       </div>
     </div>
   `).join('');
+
+  grid.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.add-to-cart')) return;
+      window.location.href = `detalle.html?id=${card.dataset.id}`;
+    });
+  });
 
   grid.querySelectorAll('.add-to-cart').forEach(btn => {
     btn.addEventListener('click', () => addToCart(parseInt(btn.dataset.id)));

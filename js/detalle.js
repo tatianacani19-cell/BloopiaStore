@@ -1,0 +1,301 @@
+let currentProduct = null;
+let currentColor = null;
+let currentQty = 1;
+
+function getUrlParam(name) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(name);
+}
+
+function initDetailPage() {
+  const id = parseInt(getUrlParam('id'));
+  if (!id) {
+    window.location.href = 'index.html';
+    return;
+  }
+
+  currentProduct = products.find(p => p.id === id);
+  if (!currentProduct) {
+    window.location.href = 'index.html';
+    return;
+  }
+
+  document.title = `BLOOPIA — ${currentProduct.name}`;
+  renderBreadcrumb();
+  renderGallery();
+  renderInfo();
+  renderAccordion();
+  renderRelated();
+}
+
+function renderBreadcrumb() {
+  const cat = document.getElementById('detBreadCat');
+  const name = document.getElementById('detBreadName');
+  if (cat) {
+    const catName = categoryNames[currentProduct.category] || currentProduct.category;
+    cat.textContent = catName;
+    cat.href = `categoria.html?category=${currentProduct.category}`;
+  }
+  if (name) name.textContent = currentProduct.name;
+}
+
+function renderGallery() {
+  const mainImg = document.getElementById('detMainImg');
+  const thumbs = document.getElementById('detThumbs');
+  const zoomBtn = document.getElementById('detZoomBtn');
+  if (!mainImg || !thumbs) return;
+
+  const images = currentProduct.images && currentProduct.images.length > 0
+    ? currentProduct.images
+    : [currentProduct.image];
+
+  mainImg.src = images[0].includes('w=') ? images[0].replace(/w=\d+/, 'w=800') : images[0];
+  mainImg.alt = currentProduct.name;
+
+  if (zoomBtn) {
+    zoomBtn.addEventListener('click', () => openModal(mainImg.src));
+  }
+
+  mainImg.addEventListener('click', () => openModal(mainImg.src));
+
+  thumbs.innerHTML = images.map((img, i) => `
+    <div class="det-thumb${i === 0 ? ' active' : ''}" data-index="${i}">
+      <img src="${img}" alt="${currentProduct.name}" loading="lazy" decoding="async" />
+    </div>
+  `).join('');
+
+  thumbs.querySelectorAll('.det-thumb').forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const idx = parseInt(thumb.dataset.index);
+      thumbs.querySelectorAll('.det-thumb').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+      const newSrc = images[idx].includes('w=') ? images[idx].replace(/w=\d+/, 'w=800') : images[idx];
+      mainImg.src = newSrc;
+    });
+  });
+}
+
+function renderInfo() {
+  const p = currentProduct;
+
+  const badgeWrap = document.getElementById('detBadgeWrap');
+  const title = document.getElementById('detTitle');
+  const pricing = document.getElementById('detPricing');
+  const colorOptions = document.getElementById('detColorOptions');
+  const colorName = document.getElementById('detColorName');
+  const desc = document.getElementById('detDesc');
+  const qtyValue = document.getElementById('detQtyValue');
+
+  if (badgeWrap) {
+    badgeWrap.innerHTML = p.badge
+      ? `<span class="product-badge">${p.badge}</span>`
+      : '';
+  }
+
+  if (title) title.textContent = p.name;
+
+  if (pricing) {
+    let html = '';
+    if (p.originalPrice && p.originalPrice > p.price) {
+      html += `<span class="det-original-price">${formatPrice(p.originalPrice)}</span>`;
+    }
+    html += `<span class="det-current-price">${formatPrice(p.price)}</span>`;
+    pricing.innerHTML = html;
+  }
+
+  if (colorOptions && colorName) {
+    const colors = p.colors || [];
+    if (colors.length > 0) {
+      currentColor = colors[0];
+      colorName.textContent = currentColor.name;
+      colorOptions.innerHTML = colors.map((c, i) => `
+        <button class="det-color-btn${i === 0 ? ' active' : ''}" data-color="${i}"
+          style="background:${c.hex}" title="${c.name}">
+        </button>
+      `).join('');
+
+      colorOptions.querySelectorAll('.det-color-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = parseInt(btn.dataset.color);
+          const color = colors[idx];
+          if (!color) return;
+          currentColor = color;
+          colorOptions.querySelectorAll('.det-color-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          if (colorName) colorName.textContent = color.name;
+          const mainImg = document.getElementById('detMainImg');
+          if (mainImg && color.image) {
+            mainImg.src = color.image.includes('w=') ? color.image.replace(/w=\d+/, 'w=800') : color.image;
+          }
+        });
+      });
+    } else {
+      colorOptions.innerHTML = '<span class="det-no-colors">Color único</span>';
+      if (colorName) colorName.textContent = 'Único';
+    }
+  }
+
+  if (desc) desc.textContent = p.shortDesc || p.description || '';
+
+  // Qty buttons
+  const minusBtn = document.getElementById('detQtyMinus');
+  const plusBtn = document.getElementById('detQtyPlus');
+  currentQty = 1;
+  if (qtyValue) qtyValue.textContent = '1';
+
+  if (minusBtn) {
+    minusBtn.addEventListener('click', () => {
+      if (currentQty > 1) {
+        currentQty--;
+        if (qtyValue) qtyValue.textContent = currentQty;
+      }
+    });
+  }
+
+  if (plusBtn) {
+    plusBtn.addEventListener('click', () => {
+      if (currentQty < 99) {
+        currentQty++;
+        if (qtyValue) qtyValue.textContent = currentQty;
+      }
+    });
+  }
+
+  // Add to cart
+  const addBtn = document.getElementById('detAddCart');
+  if (addBtn) {
+    addBtn.addEventListener('click', () => {
+      const existing = cart.find(item => item.id === p.id);
+      if (existing) {
+        existing.qty += currentQty;
+      } else {
+        cart.push({ ...p, qty: currentQty });
+      }
+      saveCart();
+      updateCartUI();
+      showNotification(`${p.name} agregado al carrito`);
+    });
+  }
+}
+
+function renderAccordion() {
+  const p = currentProduct;
+
+  const descEl = document.getElementById('detDescription');
+  if (descEl) descEl.textContent = p.description || '';
+
+  const specsEl = document.getElementById('detSpecifications');
+  if (specsEl && p.specifications) {
+    specsEl.innerHTML = p.specifications.map(s => `<li>${s}</li>`).join('');
+  }
+
+  const shipEl = document.getElementById('detShipping');
+  if (shipEl) shipEl.textContent = p.shipping || 'Envíos a todo Colombia con un tiempo de entrega de 3 a 7 días hábiles. Devoluciones gratuitas dentro de los primeros 30 días.';
+
+  // Accordion toggle
+  document.querySelectorAll('.det-acc-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const isActive = header.classList.contains('active');
+      document.querySelectorAll('.det-acc-header').forEach(h => h.classList.remove('active'));
+      document.querySelectorAll('.det-acc-body').forEach(b => b.style.maxHeight = '0');
+
+      if (!isActive) {
+        header.classList.add('active');
+        const body = header.nextElementSibling;
+        if (body) {
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      }
+    });
+  });
+
+  // Open first accordion by default
+  const firstHeader = document.querySelector('.det-acc-header');
+  if (firstHeader) {
+    firstHeader.classList.add('active');
+    const firstBody = firstHeader.nextElementSibling;
+    if (firstBody) {
+      firstBody.style.maxHeight = firstBody.scrollHeight + 'px';
+    }
+  }
+}
+
+function renderRelated() {
+  const grid = document.getElementById('relatedGrid');
+  if (!grid) return;
+
+  const related = products.filter(p =>
+    p.category === currentProduct.category &&
+    p.id !== currentProduct.id
+  ).slice(0, 4);
+
+  if (related.length === 0) {
+    const section = grid.closest('section');
+    if (section) section.style.display = 'none';
+    return;
+  }
+
+  grid.innerHTML = related.map((p, i) => `
+    <div class="product-card reveal-stagger reveal-up" data-id="${p.id}" style="transition-delay:${i * 80}ms">
+      <div class="product-image-wrap">
+        <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" class="product-img-default" />
+        ${p.hoverImage ? `<img src="${p.hoverImage}" alt="${p.name}" loading="lazy" decoding="async" class="product-img-hover" />` : ''}
+        ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+      </div>
+      <div class="product-body">
+        <h3 class="product-name">${p.name}</h3>
+        <span class="product-category-tag">${categoryNames[p.category] || p.category}</span>
+        <span class="product-price">${formatPrice(p.price)}</span>
+        <button class="add-to-cart" data-id="${p.id}">
+          <i class="fas fa-plus"></i> Agregar al Carrito
+        </button>
+      </div>
+    </div>
+  `).join('');
+
+  grid.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.add-to-cart')) return;
+      window.location.href = `detalle.html?id=${card.dataset.id}`;
+    });
+  });
+
+  grid.querySelectorAll('.add-to-cart').forEach(btn => {
+    btn.addEventListener('click', () => addToCart(parseInt(btn.dataset.id)));
+  });
+}
+
+// ========== IMAGE ZOOM MODAL ==========
+function openModal(src) {
+  const modal = document.getElementById('detModal');
+  const modalImg = document.getElementById('detModalImg');
+  if (!modal || !modalImg) return;
+  modalImg.src = src;
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  const modal = document.getElementById('detModal');
+  if (!modal) return;
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTopBar();
+  initDetailPage();
+  updateCartUI();
+
+  const modalClose = document.getElementById('detModalClose');
+  const modal = document.getElementById('detModal');
+  if (modalClose) modalClose.addEventListener('click', closeModal);
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+});

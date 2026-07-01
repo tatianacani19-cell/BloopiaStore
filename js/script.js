@@ -53,6 +53,10 @@ const categoryNames = {
   babies: 'Bebés',
 };
 
+function formatPrice(amount) {
+  return '$' + Math.round(amount).toLocaleString('es-CO');
+}
+
 // ========== RENDER PRODUCTS ==========
 function renderProducts(gridId, items) {
   const grid = document.getElementById(gridId);
@@ -64,7 +68,7 @@ function renderProducts(gridId, items) {
   }
 
   grid.innerHTML = items.map((p, i) => `
-    <div class="product-card reveal-stagger reveal-up" data-category="${p.category}" style="transition-delay:${i * 80}ms">
+    <div class="product-card reveal-stagger reveal-up" data-category="${p.category}" data-id="${p.id}" style="transition-delay:${i * 80}ms">
       <div class="product-image-wrap">
         <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async"${i < 4 ? ' fetchpriority="high"' : ''} class="product-img-default" />
         ${p.hoverImage ? `<img src="${p.hoverImage}" alt="${p.name}" loading="lazy" decoding="async" class="product-img-hover" />` : ''}
@@ -73,13 +77,21 @@ function renderProducts(gridId, items) {
       <div class="product-body">
         <h3 class="product-name">${p.name}</h3>
         <span class="product-category-tag">${categoryNames[p.category] || p.category}</span>
-        <span class="product-price">$${p.price.toFixed(2)}</span>
+        <span class="product-price">${formatPrice(p.price)}</span>
         <button class="add-to-cart" data-id="${p.id}">
           <i class="fas fa-plus"></i> Agregar al Carrito
         </button>
       </div>
     </div>
   `).join('');
+
+  grid.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.add-to-cart')) return;
+      const cat = card.dataset.category;
+      window.location.href = `detalle.html?id=${card.dataset.id || ''}`;
+    });
+  });
 
   grid.querySelectorAll('.add-to-cart').forEach(btn => {
     btn.addEventListener('click', () => addToCart(parseInt(btn.dataset.id)));
@@ -206,7 +218,7 @@ function updateCartUI() {
         </div>
         <div class="cart-item-info">
           <h4 class="cart-item-name">${item.name}</h4>
-          <span class="cart-item-price">$${item.price.toFixed(2)}</span>
+          <span class="cart-item-price">${formatPrice(item.price)}</span>
           <div class="cart-item-qty">
             <button onclick="updateQty(${item.id}, -1)"><i class="fas fa-minus"></i></button>
             <span>${item.qty}</span>
@@ -218,7 +230,7 @@ function updateCartUI() {
     `).join('');
   }
 
-  if (totalEl) totalEl.textContent = `$${getCartTotal().toFixed(2)}`;
+  if (totalEl) totalEl.textContent = `${formatPrice(getCartTotal())}`;
 }
 
 // ========== NOTIFICATION ==========
@@ -246,10 +258,10 @@ function checkoutWhatsApp() {
   let message = '¡Hola! Me gustaría pedir lo siguiente de BLOOPIA:\n\n';
 
   cart.forEach(item => {
-    message += `• ${item.name} x${item.qty} — $${(item.price * item.qty).toFixed(2)}\n`;
+    message += `• ${item.name} x${item.qty} — ${formatPrice(item.price * item.qty)}\n`;
   });
 
-  message += `\nTotal: $${getCartTotal().toFixed(2)}`;
+  message += `\nTotal: ${formatPrice(getCartTotal())}`;
   message += '\n\nPor favor confirma disponibilidad y envío. ¡Gracias!';
 
   const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
