@@ -4208,16 +4208,16 @@ input {
 .det-features {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  padding-top: 8px;
+  gap: 14px;
+  padding-top: 14px;
   border-top: 1px solid var(--border);
 }
 
 .det-feature {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px;
+  gap: 14px;
+  padding: 14px 16px;
   border-radius: var(--radius-sm);
   background: var(--cream);
   transition: var(--transition);
@@ -4225,19 +4225,19 @@ input {
 
 .det-feature:hover {
   background: var(--brand-purple-bg);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .det-feature-icon {
-  width: 40px;
-  height: 40px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   background: var(--brand-green-bg);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--brand-green-dark);
-  font-size: 1rem;
+  font-size: 1.15rem;
   flex-shrink: 0;
 }
 
@@ -4247,13 +4247,13 @@ input {
 }
 
 .det-feature-text strong {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text);
   font-weight: 600;
 }
 
 .det-feature-text span {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--text-light);
 }
 
@@ -4430,6 +4430,26 @@ input {
 
   .det-features {
     grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .det-feature {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .det-feature-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+
+  .det-feature-text strong {
+    font-size: 0.74rem;
+  }
+
+  .det-feature-text span {
+    font-size: 0.66rem;
   }
 
   .det-acc-header {
