@@ -64,8 +64,55 @@ function renderGallery() {
     </div>
   `).join('');
 
-  // Touch swipe on main image
   const mainImageWrap = document.getElementById('detMainImage');
+
+  // Magnifier lens (desktop only)
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  if (!isTouchDevice && mainImageWrap) (function initMagnifier() {
+    const lens = document.getElementById('detLens');
+    const result = document.getElementById('detZoomResult');
+    if (!lens || !result) return;
+
+    const ZOOM = 3;
+
+    function moveLens(e) {
+      const rect = mainImageWrap.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const lensHalf = lens.offsetWidth / 2;
+      let lx = x - lensHalf;
+      let ly = y - lensHalf;
+      lx = Math.max(0, Math.min(lx, rect.width - lens.offsetWidth));
+      ly = Math.max(0, Math.min(ly, rect.height - lens.offsetHeight));
+
+      lens.style.left = (lx + lensHalf) + 'px';
+      lens.style.top = (ly + lensHalf) + 'px';
+
+      const cx = lx + lens.offsetWidth / 2;
+      const cy = ly + lens.offsetHeight / 2;
+
+      result.style.backgroundImage = `url('${mainImg.src}')`;
+      result.style.backgroundSize = `${rect.width * ZOOM}px ${rect.height * ZOOM}px`;
+      result.style.backgroundPosition = `-${cx * ZOOM - result.offsetWidth / 2}px -${cy * ZOOM - result.offsetHeight / 2}px`;
+      result.classList.add('active');
+      lens.style.display = 'block';
+    }
+
+    mainImageWrap.addEventListener('mouseenter', () => {
+      lens.style.display = 'block';
+      result.classList.add('active');
+    });
+
+    mainImageWrap.addEventListener('mousemove', moveLens);
+
+    mainImageWrap.addEventListener('mouseleave', () => {
+      lens.style.display = 'none';
+      result.classList.remove('active');
+    });
+  })();
+
+  // Touch swipe on main image
   if (mainImageWrap) {
     let touchStartX = 0;
     let touchEndX = 0;
