@@ -181,7 +181,7 @@ function renderInfo() {
       : '';
   }
 
-  if (title) title.textContent = p.name;
+  if (title) title.textContent = (p.colors && p.colors[0] && p.colors[0].title) || p.name;
 
   if (pricing) {
     let html = '';
@@ -212,6 +212,8 @@ function renderInfo() {
           colorOptions.querySelectorAll('.det-color-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           if (colorName) colorName.textContent = color.name;
+          const detTitle = document.getElementById('detTitle');
+          if (detTitle) detTitle.textContent = color.title || p.name;
           const mainImg = document.getElementById('detMainImg');
           if (mainImg && color.image) {
             mainImg.src = color.image.includes('w=') ? color.image.replace(/w=\d+/, 'w=800') : color.image;
